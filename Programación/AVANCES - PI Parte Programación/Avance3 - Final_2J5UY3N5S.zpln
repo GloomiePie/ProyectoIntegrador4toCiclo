@@ -1,0 +1,2034 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n## GRAFICA UNO",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-24T16:54:33+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>GRAFICA UNO</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217646441_1765433504",
+      "id": "paragraph_1690217646441_1765433504",
+      "dateCreated": "2023-07-24T16:54:06+0000",
+      "dateStarted": "2023-07-24T16:54:33+0000",
+      "dateFinished": "2023-07-24T16:54:36+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:90"
+    },
+    {
+      "text": "val query = \"\"\"\n    (SELECT m.tipoVivienda, h.incluye_agua\n    FROM viviendas.materiales m JOIN\n    viviendas.hogar h ON h.Vivienda_idVivienda = m.Hogar_Vivienda_idVivienda) as qryData\n\"\"\"\n\nval tipoViviendaAguaDF = spark.read\n    .format(\"jdbc\")\n    .option(\"url\", \"jdbc:mysql://localhost:3306/viviendas\")\n    .option(\"driver\", \"com.mysql.cj.jdbc.Driver\")\n    .option(\"user\", \"root\")\n    .option(\"password\", \"\")\n    .option(\"dbtable\", query)\n    .load",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:07:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "incluye_agua": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "pagoMensual",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Vivienda_idVivienda",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mquery\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m =\n\"\n    (SELECT m.tipoVivienda, h.incluye_agua\n    FROM viviendas.materiales m JOIN\n    viviendas.hogar h ON h.Vivienda_idVivienda = m.Hogar_Vivienda_idVivienda) as qryData\n\"\n\u001b[1m\u001b[34mtipoViviendaAguaDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoVivienda: string, incluye_agua: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690040869496_773736446",
+      "id": "paragraph_1690040869496_773736446",
+      "dateCreated": "2023-07-22T15:47:49+0000",
+      "dateStarted": "2023-07-26T19:07:54+0000",
+      "dateFinished": "2023-07-26T19:08:17+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:91"
+    },
+    {
+      "text": "z.show(tipoViviendaAguaDF)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-25T16:28:48+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tipoVivienda": "string",
+                      "incluye_agua": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tipoVivienda\tincluye_agua\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nRancho, covacha\tOtro\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tOtra fuente por tubería\nCasa o villa\tRed Pública\nRancho, covacha\tOtra fuente por tubería\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nRancho, covacha\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nRancho, covacha\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tOtra fuente por tubería\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tOtra fuente por tubería\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nRancho, covacha\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nRancho, covacha\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tOtra fuente por tubería\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nMediagua\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCuartos en casa de inquilinato\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nCasa o villa\tRed Pública\nDepartamento\tRed Pública\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=0",
+              "$$hashKey": "object:1115"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690216856106_2117712569",
+      "id": "paragraph_1690216856106_2117712569",
+      "dateCreated": "2023-07-24T16:40:56+0000",
+      "dateStarted": "2023-07-25T16:28:48+0000",
+      "dateFinished": "2023-07-25T16:28:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:92"
+    },
+    {
+      "text": "val resultadoDF = tipoViviendaAguaDF\n    .groupBy(\"tipoVivienda\")\n    .pivot(\"incluye_agua\")\n    .count\n    .na.fill(0.0)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:08:23+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mresultadoDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoVivienda: string, Carro repartidor/triciclo: bigint ... 6 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=0",
+              "$$hashKey": "object:1161"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=1",
+              "$$hashKey": "object:1162"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=2",
+              "$$hashKey": "object:1163"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690072077045_748477150",
+      "id": "paragraph_1690072077045_748477150",
+      "dateCreated": "2023-07-23T00:27:57+0000",
+      "dateStarted": "2023-07-26T19:08:23+0000",
+      "dateFinished": "2023-07-26T19:08:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:93"
+    },
+    {
+      "text": "resultadoDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-25T16:29:02+0000",
+      "progress": 50,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "[tipoVivienda": "string",
+                      "Otra fuente por tubería": "string",
+                      "Otro": "string",
+                      "Red Pública": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "[tipoVivienda",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Otra fuente por tubería",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+-------------------------+-----------------------+----+--------------------+----+-----------+------------------------+\n|        tipoVivienda|Carro repartidor/triciclo|Otra fuente por tubería|Otro|Pila o llave pública|Pozo|Red Pública|Río, vertiente o acequia|\n+--------------------+-------------------------+-----------------------+----+--------------------+----+-----------+------------------------+\n|        Casa o villa|                      117|                    554|  36|                   3| 175|       6893|                      49|\n|        Departamento|                       16|                     29|   2|                   0|  10|       3349|                       4|\n|            Mediagua|                       16|                     29|   3|                   0|  11|        349|                       7|\n|               Choza|                        0|                      2|   0|                   0|   0|          0|                       2|\n|     Rancho, covacha|                       32|                     74|  22|                   0|  80|        224|                     131|\n|Cuartos en casa d...|                        0|                     10|   2|                   1|   1|        301|                       0|\n+--------------------+-------------------------+-----------------------+----+--------------------+----+-----------+------------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=4",
+              "$$hashKey": "object:1217"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=5",
+              "$$hashKey": "object:1218"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=6",
+              "$$hashKey": "object:1219"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690072168147_1886270270",
+      "id": "paragraph_1690072168147_1886270270",
+      "dateCreated": "2023-07-23T00:29:28+0000",
+      "dateStarted": "2023-07-25T16:29:02+0000",
+      "dateFinished": "2023-07-25T16:29:03+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:94"
+    },
+    {
+      "text": "val json = resultadoDF.toJSON.map(row => row.mkString).collectAsList",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:08:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mjson\u001b[0m: \u001b[1m\u001b[32mjava.util.List[String]\u001b[0m = [{\"tipoVivienda\":\"Casa o villa\",\"Carro repartidor/triciclo\":117,\"Otra fuente por tubería\":554,\"Otro\":36,\"Pila o llave pública\":3,\"Pozo\":175,\"Red Pública\":6893,\"Río, vertiente o acequia\":49}, {\"tipoVivienda\":\"Departamento\",\"Carro repartidor/triciclo\":16,\"Otra fuente por tubería\":29,\"Otro\":2,\"Pila o llave pública\":0,\"Pozo\":10,\"Red Pública\":3349,\"Río, vertiente o acequia\":4}, {\"tipoVivienda\":\"Mediagua\",\"Carro repartidor/triciclo\":16,\"Otra fuente por tubería\":29,\"Otro\":3,\"Pila o llave pública\":0,\"Pozo\":11,\"Red Pública\":349,\"Río, vertiente o acequia\":7}, {\"tipoVivienda\":\"Choza\",\"Carro repartidor/triciclo\":0,\"Otra fuente por tubería\":2,\"Otro\":0,\"Pila o llave pública\":0,\"Pozo\":0,\"Red Pública\":0,\"Río, vertiente o acequia\":2}, {\"tipoVivien...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=3",
+              "$$hashKey": "object:1273"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=4",
+              "$$hashKey": "object:1274"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=5",
+              "$$hashKey": "object:1275"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690073351779_1429432208",
+      "id": "paragraph_1690073351779_1429432208",
+      "dateCreated": "2023-07-23T00:49:11+0000",
+      "dateStarted": "2023-07-26T19:08:32+0000",
+      "dateFinished": "2023-07-26T19:08:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:95"
+    },
+    {
+      "text": "z.angularBind(\"dataAsJSON\", json)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:08:43+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690073377961_1368375998",
+      "id": "paragraph_1690073377961_1368375998",
+      "dateCreated": "2023-07-23T00:49:37+0000",
+      "dateStarted": "2023-07-26T19:08:43+0000",
+      "dateFinished": "2023-07-26T19:08:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:96"
+    },
+    {
+      "text": "%angular\r\n<input type=\"text\" id=\"data4Spark\" value={{dataAsJSON}}>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:08:46+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\r\n<input type=\"text\" id=\"data4Spark\" value={{dataAsJSON}}>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690073393527_605532987",
+      "id": "paragraph_1690073393527_605532987",
+      "dateCreated": "2023-07-23T00:49:53+0000",
+      "dateStarted": "2023-07-26T19:08:46+0000",
+      "dateFinished": "2023-07-26T19:08:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:97"
+    },
+    {
+      "text": "%angular\n<script>\nvar cleanText = $('#data4Spark').val().replaceAll(\"\\\\\", \"\").replaceAll(\"\\\"{\", \"{\").replaceAll(\"}\\\"\",\n\"}\");\nconsole.log(cleanText);\n$('#data4Spark').val(cleanText);\n</script>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:08:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\n<script>\nvar cleanText = $('#data4Spark').val().replaceAll(\"\\\\\", \"\").replaceAll(\"\\\"{\", \"{\").replaceAll(\"}\\\"\",\n\"}\");\nconsole.log(cleanText);\n$('#data4Spark').val(cleanText);\n</script>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690073414969_1201596256",
+      "id": "paragraph_1690073414969_1201596256",
+      "dateCreated": "2023-07-23T00:50:14+0000",
+      "dateStarted": "2023-07-26T19:08:50+0000",
+      "dateFinished": "2023-07-26T19:08:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:98"
+    },
+    {
+      "text": "%angular\r\n<style>\r\n#chartdiv {\r\nwidth: 100%;\r\nheight: 500px;\r\n}\r\n</style>\r\n<!-- Resources -->\r\n<script src=\"https://cdn.amcharts.com/lib/5/index.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/xy.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/themes/Animated.js\"></script>\r\n<!-- Chart code -->\r\n<script>\r\n// Leer los datos desde el input (No necesita cambio) y transformarlos a JSON\r\nvar data = JSON.parse($('#data4Spark').val());\r\nconsole.log(data);\r\nam5.ready(function() {\r\n// Create root element\r\n// https://www.amcharts.com/docs/v5/getting-started/#Root_element\r\nvar root = am5.Root.new(\"chartdiv\");\r\n// Set themes\r\n// https://www.amcharts.com/docs/v5/concepts/themes/\r\nroot.setThemes([\r\nam5themes_Animated.new(root)\r\n]);\r\n// Create chart\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/\r\nvar chart = root.container.children.push(am5xy.XYChart.new(root, {\r\npanX: false,\r\npanY: false,\r\nwheelX: \"panX\",\r\nwheelY: \"zoomX\",\r\nlayout: root.verticalLayout\r\n}));\r\n// Add legend\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/\r\nvar legend = chart.children.push(\r\nam5.Legend.new(root, {\r\ncenterX: am5.p50,\r\nx: am5.p50,\r\nposition: 'top'\r\n})\r\n);\r\n// Create axes\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/\r\nvar xRenderer = am5xy.AxisRendererX.new(root, {\r\ncellStartLocation: 0.1,\r\ncellEndLocation: 0.9\r\n})\r\nvar xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {\r\ncategoryField: \"tipoVivienda\", //Cambiar por su columna de agrupamiento\r\nrenderer: xRenderer,\r\ntooltip: am5.Tooltip.new(root, {})\r\n}));\r\nxRenderer.grid.template.setAll({\r\nlocation: 1\r\n})\r\nxAxis.data.setAll(data);\r\nvar yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {\r\nrenderer: am5xy.AxisRendererY.new(root, {\r\nstrokeOpacity: 0.1\r\n})\r\n}));\r\n// Add series\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/series/\r\nfunction makeSeries(name, fieldName) {\r\nvar series = chart.series.push(am5xy.ColumnSeries.new(root, {\r\nname: name,\r\nxAxis: xAxis,\r\nyAxis: yAxis,\r\nvalueYField: fieldName,\r\ncategoryXField: \"tipoVivienda\" //Cambiar por su columna de agrupamiento\r\n}));\r\nseries.columns.template.setAll({\r\ntooltipText: \"{name}, {categoryX.formatNumber('#')}:{valueY.formatNumber('###.##')}\",\r\nwidth: am5.percent(90),\r\ntooltipY: 0,\r\nstrokeOpacity: 0\r\n});\r\nseries.data.setAll(data);\r\n// Make stuff animate on load\r\n// https://www.amcharts.com/docs/v5/concepts/animations/\r\nseries.appear();\r\nseries.bullets.push(function() {\r\nreturn am5.Bullet.new(root, {\r\nlocationY: 0,\r\nsprite: am5.Label.new(root, {\r\ntext: \"{valueY}\",\r\nfill: root.interfaceColors.get(\"alternativeText\"),\r\ncenterY: 0,\r\ncenterX: am5.p50,\r\npopulateText: true\r\n})\r\n});\r\n});\r\nlegend.data.push(series);\r\n}\r\n//Necesita adaptar para el resto de sus columnas, una llamada a makeSeries por cada columna\r\n//En makeSeries, el primer parámetro es el valor a mostrar y el segundo es el nombre de\r\n//la columna o propiedad JSON\r\nmakeSeries(\"Carro repartidor/triciclo\", \"Carro repartidor/triciclo\");\r\nmakeSeries(\"Otra fuente por tubería\", \"Otra fuente por tubería\");\r\nmakeSeries(\"Otro\", \"Otro\");\r\nmakeSeries(\"Red Pública\", \"Red Pública\");\r\nmakeSeries(\"Pila o llave pública\", \"Pila o llave pública\");\r\nmakeSeries(\"Pozo\", \"Pozo\");\r\nmakeSeries(\"Río, vertiente o acequia\", \"Río, vertiente o acequia\");\r\n// Make stuff animate on load\r\n// https://www.amcharts.com/docs/v5/concepts/animations/\r\nchart.appear(1000, 100);\r\n}); // end am5.ready()\r\n</script>\r\n<!-- HTML -->\r\n<div id=\"chartdiv\"></div>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-26T19:20:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\r\n<style>\r\n#chartdiv {\r\nwidth: 100%;\r\nheight: 500px;\r\n}\r\n</style>\r\n<!-- Resources -->\r\n<script src=\"https://cdn.amcharts.com/lib/5/index.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/xy.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/themes/Animated.js\"></script>\r\n<!-- Chart code -->\r\n<script>\r\n// Leer los datos desde el input (No necesita cambio) y transformarlos a JSON\r\nvar data = JSON.parse($('#data4Spark').val());\r\nconsole.log(data);\r\nam5.ready(function() {\r\n// Create root element\r\n// https://www.amcharts.com/docs/v5/getting-started/#Root_element\r\nvar root = am5.Root.new(\"chartdiv\");\r\n// Set themes\r\n// https://www.amcharts.com/docs/v5/concepts/themes/\r\nroot.setThemes([\r\nam5themes_Animated.new(root)\r\n]);\r\n// Create chart\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/\r\nvar chart = root.container.children.push(am5xy.XYChart.new(root, {\r\npanX: false,\r\npanY: false,\r\nwheelX: \"panX\",\r\nwheelY: \"zoomX\",\r\nlayout: root.verticalLayout\r\n}));\r\n// Add legend\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/\r\nvar legend = chart.children.push(\r\nam5.Legend.new(root, {\r\ncenterX: am5.p50,\r\nx: am5.p50,\r\nposition: 'top'\r\n})\r\n);\r\n// Create axes\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/\r\nvar xRenderer = am5xy.AxisRendererX.new(root, {\r\ncellStartLocation: 0.1,\r\ncellEndLocation: 0.9\r\n})\r\nvar xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {\r\ncategoryField: \"tipoVivienda\", //Cambiar por su columna de agrupamiento\r\nrenderer: xRenderer,\r\ntooltip: am5.Tooltip.new(root, {})\r\n}));\r\nxRenderer.grid.template.setAll({\r\nlocation: 1\r\n})\r\nxAxis.data.setAll(data);\r\nvar yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {\r\nrenderer: am5xy.AxisRendererY.new(root, {\r\nstrokeOpacity: 0.1\r\n})\r\n}));\r\n// Add series\r\n// https://www.amcharts.com/docs/v5/charts/xy-chart/series/\r\nfunction makeSeries(name, fieldName) {\r\nvar series = chart.series.push(am5xy.ColumnSeries.new(root, {\r\nname: name,\r\nxAxis: xAxis,\r\nyAxis: yAxis,\r\nvalueYField: fieldName,\r\ncategoryXField: \"tipoVivienda\" //Cambiar por su columna de agrupamiento\r\n}));\r\nseries.columns.template.setAll({\r\ntooltipText: \"{name}, {categoryX.formatNumber('#')}:{valueY.formatNumber('###.##')}\",\r\nwidth: am5.percent(90),\r\ntooltipY: 0,\r\nstrokeOpacity: 0\r\n});\r\nseries.data.setAll(data);\r\n// Make stuff animate on load\r\n// https://www.amcharts.com/docs/v5/concepts/animations/\r\nseries.appear();\r\nseries.bullets.push(function() {\r\nreturn am5.Bullet.new(root, {\r\nlocationY: 0,\r\nsprite: am5.Label.new(root, {\r\ntext: \"{valueY}\",\r\nfill: root.interfaceColors.get(\"alternativeText\"),\r\ncenterY: 0,\r\ncenterX: am5.p50,\r\npopulateText: true\r\n})\r\n});\r\n});\r\nlegend.data.push(series);\r\n}\r\n//Necesita adaptar para el resto de sus columnas, una llamada a makeSeries por cada columna\r\n//En makeSeries, el primer parámetro es el valor a mostrar y el segundo es el nombre de\r\n//la columna o propiedad JSON\r\nmakeSeries(\"Carro repartidor/triciclo\", \"Carro repartidor/triciclo\");\r\nmakeSeries(\"Otra fuente por tubería\", \"Otra fuente por tubería\");\r\nmakeSeries(\"Otro\", \"Otro\");\r\nmakeSeries(\"Red Pública\", \"Red Pública\");\r\nmakeSeries(\"Pila o llave pública\", \"Pila o llave pública\");\r\nmakeSeries(\"Pozo\", \"Pozo\");\r\nmakeSeries(\"Río, vertiente o acequia\", \"Río, vertiente o acequia\");\r\n// Make stuff animate on load\r\n// https://www.amcharts.com/docs/v5/concepts/animations/\r\nchart.appear(1000, 100);\r\n}); // end am5.ready()\r\n</script>\r\n<!-- HTML -->\r\n<div id=\"chartdiv\"></div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690073433414_1291230002",
+      "id": "paragraph_1690073433414_1291230002",
+      "dateCreated": "2023-07-23T00:50:33+0000",
+      "dateStarted": "2023-07-26T19:20:54+0000",
+      "dateFinished": "2023-07-26T19:20:54+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:99"
+    },
+    {
+      "text": "%md\n## GRAFICA DOS\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-22T23:52:46+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>GRAFICA DOS</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690068723905_1659190589",
+      "id": "paragraph_1690068723905_1659190589",
+      "dateCreated": "2023-07-22T23:32:03+0000",
+      "dateStarted": "2023-07-22T23:52:46+0000",
+      "dateFinished": "2023-07-22T23:52:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:100"
+    },
+    {
+      "text": "val query2 = \"\"\"\n    (SELECT s.tipoAlumbrado, v.tipoVivienda \n    FROM viviendas.serviciosBasicos s\n    JOIN viviendas.hogar v ON s.Hogar_Vivienda_idVivienda = v.Vivienda_idVivienda) as qryData\n\"\"\"\n\nval tipoViviendaAlumbradoDF = spark.read\n    .format(\"jdbc\")\n    .option(\"url\", \"jdbc:mysql://localhost:3306/viviendas\")\n    .option(\"driver\", \"com.mysql.cj.jdbc.Driver\")\n    .option(\"user\", \"root\")\n    .option(\"password\", \"\")\n    .option(\"dbtable\", query2)\n    .load",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:12+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mquery2\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m =\n\"\n    (SELECT s.tipoAlumbrado, v.tipoVivienda\n    FROM viviendas.serviciosBasicos s\n    JOIN viviendas.hogar v ON s.Hogar_Vivienda_idVivienda = v.Vivienda_idVivienda) as qryData\n\"\n\u001b[1m\u001b[34mtipoViviendaAlumbradoDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoAlumbrado: string, tipoVivienda: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217307226_971213891",
+      "id": "paragraph_1690217307226_971213891",
+      "dateCreated": "2023-07-24T16:48:27+0000",
+      "dateStarted": "2023-07-27T03:16:12+0000",
+      "dateFinished": "2023-07-27T03:16:12+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:101"
+    },
+    {
+      "text": "tipoViviendaAlumbradoDF.show",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-25T16:33:21+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tipoAlumbrado": "string",
+                      "tipoVivienda": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "tipoAlumbrado",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "tipoVivienda",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+\n|       tipoAlumbrado|        tipoVivienda|\n+--------------------+--------------------+\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|Cuartos en casa d...|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|Cuartos en casa d...|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Departamento|\n|Empresa eléctrica...|        Casa o villa|\n|Empresa eléctrica...|        Departamento|\n+--------------------+--------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=10",
+              "$$hashKey": "object:1569"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690069966278_59351980",
+      "id": "paragraph_1690069966278_59351980",
+      "dateCreated": "2023-07-22T23:52:46+0000",
+      "dateStarted": "2023-07-25T16:33:21+0000",
+      "dateFinished": "2023-07-25T16:33:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:102"
+    },
+    {
+      "text": "val resultadoDF2 = tipoViviendaAlumbradoDF\n    .groupBy(\"tipoVivienda\")\n    .pivot(\"tipoAlumbrado\")\n    .count\n    .na.fill(0.0)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:15+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mresultadoDF2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoVivienda: string, Empresa eléctrica pública: bigint ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=13",
+              "$$hashKey": "object:1615"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=14",
+              "$$hashKey": "object:1616"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=15",
+              "$$hashKey": "object:1617"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690070063747_160422671",
+      "id": "paragraph_1690070063747_160422671",
+      "dateCreated": "2023-07-22T23:54:23+0000",
+      "dateStarted": "2023-07-27T03:16:15+0000",
+      "dateFinished": "2023-07-27T03:16:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:103"
+    },
+    {
+      "text": "resultadoDF2.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-25T16:33:35+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+-------------------------+-------+------------------------+--------------------------+\n|        tipoVivienda|Empresa eléctrica pública|Ninguno|Planta eléctrica privada|Vela, candil, mechero, gas|\n+--------------------+-------------------------+-------+------------------------+--------------------------+\n|        Casa o villa|                     7799|      6|                      16|                         6|\n|        Departamento|                     3400|      0|                       9|                         1|\n|            Mediagua|                      412|      0|                       2|                         1|\n|               Choza|                        2|      0|                       0|                         2|\n|     Rancho, covacha|                      532|      3|                       8|                        20|\n|Cuartos en casa d...|                      315|      0|                       0|                         0|\n+--------------------+-------------------------+-------+------------------------+--------------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=14",
+              "$$hashKey": "object:1671"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=15",
+              "$$hashKey": "object:1672"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=16",
+              "$$hashKey": "object:1673"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217768211_242918791",
+      "id": "paragraph_1690217768211_242918791",
+      "dateCreated": "2023-07-24T16:56:08+0000",
+      "dateStarted": "2023-07-25T16:33:35+0000",
+      "dateFinished": "2023-07-25T16:33:36+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:104"
+    },
+    {
+      "text": "val json2 = resultadoDF2.toJSON.map(row => row.mkString).collectAsList",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:19+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mjson2\u001b[0m: \u001b[1m\u001b[32mjava.util.List[String]\u001b[0m = [{\"tipoVivienda\":\"Casa o villa\",\"Empresa eléctrica pública\":7799,\"Ninguno\":6,\"Planta eléctrica privada\":16,\"Vela, candil, mechero, gas\":6}, {\"tipoVivienda\":\"Departamento\",\"Empresa eléctrica pública\":3400,\"Ninguno\":0,\"Planta eléctrica privada\":9,\"Vela, candil, mechero, gas\":1}, {\"tipoVivienda\":\"Mediagua\",\"Empresa eléctrica pública\":412,\"Ninguno\":0,\"Planta eléctrica privada\":2,\"Vela, candil, mechero, gas\":1}, {\"tipoVivienda\":\"Choza\",\"Empresa eléctrica pública\":2,\"Ninguno\":0,\"Planta eléctrica privada\":0,\"Vela, candil, mechero, gas\":2}, {\"tipoVivienda\":\"Rancho, covacha\",\"Empresa eléctrica pública\":532,\"Ninguno\":3,\"Planta eléctrica privada\":8,\"Vela, candil, mechero, gas\":20}, {\"tipoVivienda\":\"Cuartos en casa de inquilinato\",\"Empresa e...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=16",
+              "$$hashKey": "object:1727"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=17",
+              "$$hashKey": "object:1728"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=18",
+              "$$hashKey": "object:1729"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217820150_1844951433",
+      "id": "paragraph_1690217820150_1844951433",
+      "dateCreated": "2023-07-24T16:57:00+0000",
+      "dateStarted": "2023-07-27T03:16:19+0000",
+      "dateFinished": "2023-07-27T03:16:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:105"
+    },
+    {
+      "text": "z.angularBind(\"dataAsJSON2\", json2)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:23+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217849721_1687289826",
+      "id": "paragraph_1690217849721_1687289826",
+      "dateCreated": "2023-07-24T16:57:29+0000",
+      "dateStarted": "2023-07-27T03:16:23+0000",
+      "dateFinished": "2023-07-27T03:16:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:106"
+    },
+    {
+      "text": "%angular\r\n<input type=\"text\" id=\"data4Spark2\" value={{dataAsJSON2}}>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:26+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\r\n<input type=\"text\" id=\"data4Spark2\" value={{dataAsJSON2}}>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217864110_1728161425",
+      "id": "paragraph_1690217864110_1728161425",
+      "dateCreated": "2023-07-24T16:57:44+0000",
+      "dateStarted": "2023-07-27T03:16:26+0000",
+      "dateFinished": "2023-07-27T03:16:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:107"
+    },
+    {
+      "text": "%angular\n<script>\nvar cleanText2 =  $('#data4Spark2').val().replaceAll(\"\\\\\", \"\").replaceAll(\"\\\"{\", \"{\").replaceAll(\"}\\\"\",\n\"}\");\nconsole.log(cleanText2);\n$('#data4Spark2').val(cleanText2);\n</script>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:16:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\n<script>\nvar cleanText2 =  $('#data4Spark2').val().replaceAll(\"\\\\\", \"\").replaceAll(\"\\\"{\", \"{\").replaceAll(\"}\\\"\",\n\"}\");\nconsole.log(cleanText2);\n$('#data4Spark2').val(cleanText2);\n</script>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217894806_44556171",
+      "id": "paragraph_1690217894806_44556171",
+      "dateCreated": "2023-07-24T16:58:14+0000",
+      "dateStarted": "2023-07-27T03:16:30+0000",
+      "dateFinished": "2023-07-27T03:16:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:108"
+    },
+    {
+      "text": "%angular\r\n<style>\r\n#chartdiv2 {\r\n  width: 100%;\r\n  height: 500px;\r\n}\r\n</style>\r\n<!-- Resources -->\r\n<script src=\"https://cdn.amcharts.com/lib/5/index.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/xy.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/themes/Animated.js\"></script>\r\n<!-- Chart code -->\r\n<script>\r\n// Leer los datos desde el input (No necesita cambio) y transformarlos a JSON\r\nvar data2 = JSON.parse($('#data4Spark2').val());\r\nconsole.log(data2);\r\nam5.ready(function() {\r\n  // Create root element\r\n  // https://www.amcharts.com/docs/v5/getting-started/#Root_element\r\n  var root = am5.Root.new(\"chartdiv2\");\r\n  // Set themes\r\n  // https://www.amcharts.com/docs/v5/concepts/themes/\r\n  root.setThemes([\r\n    am5themes_Animated.new(root)\r\n  ]);\r\n  // Create chart\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/\r\n  var chart = root.container.children.push(am5xy.XYChart.new(root, {\r\n    panX: false,\r\n    panY: false,\r\n    wheelX: \"panX\",\r\n    wheelY: \"zoomX\",\r\n    layout: root.verticalLayout\r\n  }));\r\n  // Add legend\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/\r\n  var legend = chart.children.push(\r\n    am5.Legend.new(root, {\r\n      centerX: am5.p50,\r\n      x: am5.p50,\r\n      position: 'top'\r\n    })\r\n  );\r\n  // Create axes\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/\r\n  var xRenderer = am5xy.AxisRendererX.new(root, {\r\n    cellStartLocation: 0.1,\r\n    cellEndLocation: 0.9\r\n  });\r\n  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {\r\n    categoryField: \"tipoVivienda\", //Cambiar por su columna de agrupamiento\r\n    renderer: xRenderer,\r\n    tooltip: am5.Tooltip.new(root, {})\r\n  }));\r\n  xRenderer.grid.template.setAll({\r\n    location: 1\r\n  });\r\n  xAxis.data.setAll(data2);\r\n  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {\r\n    renderer: am5xy.AxisRendererY.new(root, {\r\n      strokeOpacity: 0.1\r\n    })\r\n  }));\r\n  // Add series\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/\r\n  function makeSeries(name, fieldName) {\r\n    var series = chart.series.push(am5xy.ColumnSeries.new(root, {\r\n      name: name,\r\n      xAxis: xAxis,\r\n      yAxis: yAxis,\r\n      valueYField: fieldName,\r\n      categoryXField: \"tipoVivienda\" //Cambiar por su columna de agrupamiento\r\n    }));\r\n    series.columns.template.setAll({\r\n      tooltipText: \"{name}, {categoryX.formatNumber('#')}:{valueY.formatNumber('###.##')}\",\r\n      width: am5.percent(90),\r\n      tooltipY: 0,\r\n      strokeOpacity: 0\r\n    });\r\n    series.data.setAll(data2);\r\n    // Make stuff animate on load\r\n    // https://www.amcharts.com/docs/v5/concepts/animations/\r\n    series.appear();\r\n    series.bullets.push(function() {\r\n      return am5.Bullet.new(root, {\r\n        locationY: 0,\r\n        sprite: am5.Label.new(root, {\r\n          text: \"{valueY}\",\r\n          fill: root.interfaceColors.get(\"alternativeText\"),\r\n          centerY: 0,\r\n          centerX: am5.p50,\r\n          populateText: true\r\n        })\r\n      });\r\n    });\r\n    legend.data.push(series);\r\n  }\r\n  //Necesita adaptar para el resto de sus columnas, una llamada a makeSeries por cada columna\r\n  //En makeSeries, el primer parámetro es el valor a mostrar y el segundo es el nombre de\r\n  //la columna o propiedad JSON\r\n  makeSeries(\"Empresa eléctrica pública\", \"Empresa eléctrica pública\");\r\n  makeSeries(\"Ninguno\", \"Ninguno\");\r\n  makeSeries(\"Planta eléctrica privada\", \"Planta eléctrica privada\");\r\n  makeSeries(\"Vela, candil, mechero, gas\", \"Vela, candil, mechero, gas\");\r\n  // Make stuff animate on load\r\n  // https://www.amcharts.com/docs/v5/concepts/animations/\r\n  chart.appear(1000, 100);\r\n}); // end am5.ready()\r\n</script>\r\n<!-- HTML -->\r\n<div id=\"chartdiv2\"></div>",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T04:42:44+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\r\n<style>\r\n#chartdiv2 {\r\n  width: 100%;\r\n  height: 500px;\r\n}\r\n</style>\r\n<!-- Resources -->\r\n<script src=\"https://cdn.amcharts.com/lib/5/index.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/xy.js\"></script>\r\n<script src=\"https://cdn.amcharts.com/lib/5/themes/Animated.js\"></script>\r\n<!-- Chart code -->\r\n<script>\r\n// Leer los datos desde el input (No necesita cambio) y transformarlos a JSON\r\nvar data2 = JSON.parse($('#data4Spark2').val());\r\nconsole.log(data2);\r\nam5.ready(function() {\r\n  // Create root element\r\n  // https://www.amcharts.com/docs/v5/getting-started/#Root_element\r\n  var root = am5.Root.new(\"chartdiv2\");\r\n  // Set themes\r\n  // https://www.amcharts.com/docs/v5/concepts/themes/\r\n  root.setThemes([\r\n    am5themes_Animated.new(root)\r\n  ]);\r\n  // Create chart\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/\r\n  var chart = root.container.children.push(am5xy.XYChart.new(root, {\r\n    panX: false,\r\n    panY: false,\r\n    wheelX: \"panX\",\r\n    wheelY: \"zoomX\",\r\n    layout: root.verticalLayout\r\n  }));\r\n  // Add legend\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/\r\n  var legend = chart.children.push(\r\n    am5.Legend.new(root, {\r\n      centerX: am5.p50,\r\n      x: am5.p50,\r\n      position: 'top'\r\n    })\r\n  );\r\n  // Create axes\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/\r\n  var xRenderer = am5xy.AxisRendererX.new(root, {\r\n    cellStartLocation: 0.1,\r\n    cellEndLocation: 0.9\r\n  });\r\n  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {\r\n    categoryField: \"tipoVivienda\", //Cambiar por su columna de agrupamiento\r\n    renderer: xRenderer,\r\n    tooltip: am5.Tooltip.new(root, {})\r\n  }));\r\n  xRenderer.grid.template.setAll({\r\n    location: 1\r\n  });\r\n  xAxis.data.setAll(data2);\r\n  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {\r\n    renderer: am5xy.AxisRendererY.new(root, {\r\n      strokeOpacity: 0.1\r\n    })\r\n  }));\r\n  // Add series\r\n  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/\r\n  function makeSeries(name, fieldName) {\r\n    var series = chart.series.push(am5xy.ColumnSeries.new(root, {\r\n      name: name,\r\n      xAxis: xAxis,\r\n      yAxis: yAxis,\r\n      valueYField: fieldName,\r\n      categoryXField: \"tipoVivienda\" //Cambiar por su columna de agrupamiento\r\n    }));\r\n    series.columns.template.setAll({\r\n      tooltipText: \"{name}, {categoryX.formatNumber('#')}:{valueY.formatNumber('###.##')}\",\r\n      width: am5.percent(90),\r\n      tooltipY: 0,\r\n      strokeOpacity: 0\r\n    });\r\n    series.data.setAll(data2);\r\n    // Make stuff animate on load\r\n    // https://www.amcharts.com/docs/v5/concepts/animations/\r\n    series.appear();\r\n    series.bullets.push(function() {\r\n      return am5.Bullet.new(root, {\r\n        locationY: 0,\r\n        sprite: am5.Label.new(root, {\r\n          text: \"{valueY}\",\r\n          fill: root.interfaceColors.get(\"alternativeText\"),\r\n          centerY: 0,\r\n          centerX: am5.p50,\r\n          populateText: true\r\n        })\r\n      });\r\n    });\r\n    legend.data.push(series);\r\n  }\r\n  //Necesita adaptar para el resto de sus columnas, una llamada a makeSeries por cada columna\r\n  //En makeSeries, el primer parámetro es el valor a mostrar y el segundo es el nombre de\r\n  //la columna o propiedad JSON\r\n  makeSeries(\"Empresa eléctrica pública\", \"Empresa eléctrica pública\");\r\n  makeSeries(\"Ninguno\", \"Ninguno\");\r\n  makeSeries(\"Planta eléctrica privada\", \"Planta eléctrica privada\");\r\n  makeSeries(\"Vela, candil, mechero, gas\", \"Vela, candil, mechero, gas\");\r\n  // Make stuff animate on load\r\n  // https://www.amcharts.com/docs/v5/concepts/animations/\r\n  chart.appear(1000, 100);\r\n}); // end am5.ready()\r\n</script>\r\n<!-- HTML -->\r\n<div id=\"chartdiv2\"></div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690217926895_1205823611",
+      "id": "paragraph_1690217926895_1205823611",
+      "dateCreated": "2023-07-24T16:58:46+0000",
+      "dateStarted": "2023-07-27T03:23:16+0000",
+      "dateFinished": "2023-07-27T03:23:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:109"
+    },
+    {
+      "text": "%md\n## RELACIÓN ENTRE CSV Y BASE DE DATOS",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:04:02+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>RELACIÓN ENTRE CSV Y BASE DE DATOS</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690219383361_1152089935",
+      "id": "paragraph_1690219383361_1152089935",
+      "dateCreated": "2023-07-24T17:23:03+0000",
+      "dateStarted": "2023-07-27T03:04:02+0000",
+      "dateFinished": "2023-07-27T03:04:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:110"
+    },
+    {
+      "text": "val data = spark\n    .read\n    .option(\"inferSchema\", \"true\")\n    .option(\"header\", \"true\")\n    .option(\"delimiter\", \";\")\n    .csv(\"/workspace/zeppelin-paavanzada/enemdu_vivienda_hogar_2023_I_trimestre.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:02:42+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [area: int, ciudad: int ... 55 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=0",
+              "$$hashKey": "object:1983"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=1",
+              "$$hashKey": "object:1984"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690218027462_2036082688",
+      "id": "paragraph_1690218027462_2036082688",
+      "dateCreated": "2023-07-24T17:00:27+0000",
+      "dateStarted": "2023-07-27T03:02:42+0000",
+      "dateFinished": "2023-07-27T03:02:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:111"
+    },
+    {
+      "text": "val data2 = data\n    .withColumnRenamed(\"vi01\", \"ViaAccesoVivienda\")\n    .withColumnRenamed(\"vi02\", \"tipoVivienda\")\n    .withColumnRenamed(\"vi03a\", \"materialTecho\")\n    .withColumnRenamed(\"vi03b\", \"estadoTecho\")\n    .withColumnRenamed(\"vi04a\", \"materialPiso\")\n    .withColumnRenamed(\"vi04b\", \"estadoPiso\")\n    .withColumnRenamed(\"vi05a\", \"materialParedes\")\n    .withColumnRenamed(\"vi05b\", \"estadoParedes\")\n    .withColumnRenamed(\"vi06\", \"numeroCuartos\")\n    .withColumnRenamed(\"vi07\", \"numeroDormitorios\")\n    .withColumnRenamed(\"vi07a\", \"numeroCuartosNegocio\")\n    .withColumnRenamed(\"vi07b\", \"cuartoExcCocinar\")\n    .withColumnRenamed(\"vi08\", \"materialConCocinan\")\n    .withColumnRenamed(\"vi09\", \"tipoServicioHigienico\")\n    .withColumnRenamed(\"vi09a\", \"noPoseeServicioHigienico\")\n    .withColumnRenamed(\"vi09b\", \"tipoInstalacionSanitaria\")\n    .withColumnRenamed(\"vi10\", \"obtencionDeAgua\") \n    .withColumnRenamed(\"vi101\", \"poseeMedidorDeAgua\")\n    .withColumnRenamed(\"vi102\", \"extraeDeLaJuntaDeAgua\")\n    .withColumnRenamed(\"vi10a\", \"elAguaRecibidaEs\")\n    .withColumnRenamed(\"vi11\", \"elServicioDeDuchaEs\")\n    .withColumnRenamed(\"vi12\", \"tipoAlumbrado\")\n    .withColumnRenamed(\"vi13\", \"eliminacionDeBasura\")\n    .withColumnRenamed(\"vi14\", \"tenenciaVivienda\")\n    .withColumnRenamed(\"vi141\", \"pagoMensualArriendo\")\n    .withColumnRenamed(\"vi142\", \"pagoIncluyeServicioAgua\")\n    .withColumnRenamed(\"vi143\", \"pagoIncluyeServicioLuz\")\n    .withColumnRenamed(\"vi144\", \"relacionParentescoPropietario\")\n    .withColumnRenamed(\"vi1511\", \"tieneVehiculos\")\n    .withColumnRenamed(\"vi1521\", \"cuantosVehiculosTiene\")\n    .withColumnRenamed(\"vi1512\", \"tieneMotos\")\n    .withColumnRenamed(\"vi1522\", \"cuantosMotosTiene\")\n    .withColumnRenamed(\"vi1531\", \"abastecimientoConSuper\")\n    .withColumnRenamed(\"vi1541\", \"gastoCombustibleSuper\")\n    .withColumnRenamed(\"vi1532\", \"abastecimientoExtra\")\n    .withColumnRenamed(\"vi1542\", \"gastoCombustibleExtra\")\n    .withColumnRenamed(\"vi1533\", \"abastecimientoDiesel\")\n    .withColumnRenamed(\"vi1543\", \"gastoCombustibleDiesel\")\n    .withColumnRenamed(\"vi1534\", \"abastecimientoEcopais\")\n    .withColumnRenamed(\"vi1544\", \"gastoCombustiblePais\")\n    .withColumnRenamed(\"vi1535\", \"abastecimientoElectricidad\")\n    .withColumnRenamed(\"vi1545\", \"gastoElectricidad\")\n    .withColumnRenamed(\"vi1536\", \"abastecimientoGas\")\n    .withColumnRenamed(\"vi1546\", \"gastoGas\")\n    .drop(\"panelm\")\n    .drop(\"estrato\")\n    .drop(\"upm\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:02:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [area: int, ciudad: int ... 52 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690219499769_413165410",
+      "id": "paragraph_1690219499769_413165410",
+      "dateCreated": "2023-07-24T17:24:59+0000",
+      "dateStarted": "2023-07-27T03:02:50+0000",
+      "dateFinished": "2023-07-27T03:02:51+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:112"
+    },
+    {
+      "text": "val pretipoVivienda = data2\r\n  .groupBy(\"tipoVivienda\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  \r\nz.show(pretipoVivienda)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:03:19+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tipoVivienda": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tipoVivienda\tcount\n1\t15714\n2\t8057\n5\t1317\n4\t808\n3\t678\n6\t6\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpretipoVivienda\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [tipoVivienda: int, count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=4",
+              "$$hashKey": "object:2074"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=5",
+              "$$hashKey": "object:2075"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690219514833_674947305",
+      "id": "paragraph_1690219514833_674947305",
+      "dateCreated": "2023-07-24T17:25:14+0000",
+      "dateStarted": "2023-07-27T03:03:19+0000",
+      "dateFinished": "2023-07-27T03:03:19+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:113"
+    },
+    {
+      "text": "val queryTiVivienda = \"\"\"\n    (SELECT *\n    FROM viviendas.tiposviviendas) as qryData\n\"\"\"\n\nval tipoViviendaDF = spark.read\n    .format(\"jdbc\")\n    .option(\"url\", \"jdbc:mysql://localhost:3306/viviendas\")\n    .option(\"driver\", \"com.mysql.cj.jdbc.Driver\")\n    .option(\"user\", \"root\")\n    .option(\"password\", \"\")\n    .option(\"dbtable\", queryTiVivienda)\n    .load\n    \nz.show(tipoViviendaDF)",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:03:21+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "idTiposViviendas": "string",
+                      "tipo": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "idTiposViviendas\ttipo\n1\tCasa o Villa\n2\tDepartamento\n3\tCuartos en casa de inquilinato\n4\tMediagua\n5\tRancho, covacha\n6\tChoza\n7\tOtra\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mqueryTiVivienda\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m =\n\"\n    (SELECT *\n    FROM viviendas.tiposviviendas) as qryData\n\"\n\u001b[1m\u001b[34mtipoViviendaDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [idTiposViviendas: int, tipo: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=6",
+              "$$hashKey": "object:2125"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690219590326_1386206201",
+      "id": "paragraph_1690219590326_1386206201",
+      "dateCreated": "2023-07-24T17:26:30+0000",
+      "dateStarted": "2023-07-27T03:03:21+0000",
+      "dateFinished": "2023-07-27T03:03:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:114"
+    },
+    {
+      "text": "val innerTipoVivienda = pretipoVivienda.join(tipoViviendaDF, pretipoVivienda(\"tipoVivienda\") === tipoViviendaDF(\"idTiposViviendas\"), \"inner\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:03:25+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34minnerTipoVivienda\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoVivienda: int, count: bigint ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690325242002_810931366",
+      "id": "paragraph_1690325242002_810931366",
+      "dateCreated": "2023-07-25T22:47:22+0000",
+      "dateStarted": "2023-07-27T03:03:25+0000",
+      "dateFinished": "2023-07-27T03:03:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:115"
+    },
+    {
+      "text": "%md\n## GRAFICO DE PASTEL SEGUN EL TIPO DE VIVIENDA",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:04:40+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>GRAFICO DE PASTEL SEGUN EL TIPO DE VIVIENDA</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427061886_1028047846",
+      "id": "paragraph_1690427061886_1028047846",
+      "dateCreated": "2023-07-27T03:04:21+0000",
+      "dateStarted": "2023-07-27T03:04:40+0000",
+      "dateFinished": "2023-07-27T03:04:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:116"
+    },
+    {
+      "text": "z.show(innerTipoVivienda.select($\"tipo\", $\"count\"))",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T04:53:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tipo": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "tipo",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tipo\tcount\nCasa o Villa\t15714\nDepartamento\t8057\nCuartos en casa de inquilinato\t678\nMediagua\t808\nRancho, covacha\t1317\nChoza\t6\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=7",
+              "$$hashKey": "object:4560"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=9",
+              "$$hashKey": "object:4561"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690426937620_350157106",
+      "id": "paragraph_1690426937620_350157106",
+      "dateCreated": "2023-07-27T03:02:17+0000",
+      "dateStarted": "2023-07-27T03:03:35+0000",
+      "dateFinished": "2023-07-27T03:03:36+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:117"
+    },
+    {
+      "text": "val pretipoServicioHigienico = data2\r\n  .groupBy(\"tipoServicioHigienico\")\r\n  .count()",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:04:48+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpretipoServicioHigienico\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoServicioHigienico: int, count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427015952_1977188232",
+      "id": "paragraph_1690427015952_1977188232",
+      "dateCreated": "2023-07-27T03:03:35+0000",
+      "dateStarted": "2023-07-27T03:04:48+0000",
+      "dateFinished": "2023-07-27T03:04:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:118"
+    },
+    {
+      "text": "val queryTiServicio = \"\"\"\n    (SELECT * FROM viviendas.serviciohigienico) as qryData\n\"\"\"\n\nval tipoServicioDF = spark.read\n    .format(\"jdbc\")\n    .option(\"url\", \"jdbc:mysql://localhost:3306/viviendas\")\n    .option(\"driver\", \"com.mysql.cj.jdbc.Driver\")\n    .option(\"user\", \"root\")\n    .option(\"password\", \"\")\n    .option(\"dbtable\", queryTiServicio)\n    .load",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:05:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mqueryTiServicio\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m =\n\"\n    (SELECT * FROM viviendas.serviciohigienico) as qryData\n\"\n\u001b[1m\u001b[34mtipoServicioDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [idServicioHigienico: int, tipo: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427088471_1031796613",
+      "id": "paragraph_1690427088471_1031796613",
+      "dateCreated": "2023-07-27T03:04:48+0000",
+      "dateStarted": "2023-07-27T03:05:08+0000",
+      "dateFinished": "2023-07-27T03:05:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:119"
+    },
+    {
+      "text": "val innerTipoServicio = pretipoServicioHigienico.join(tipoServicioDF, pretipoServicioHigienico(\"tipoServicioHigienico\") === tipoServicioDF(\"idServicioHigienico\"), \"inner\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:06:18+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34minnerTipoServicio\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [tipoServicioHigienico: int, count: bigint ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427108742_203515878",
+      "id": "paragraph_1690427108742_203515878",
+      "dateCreated": "2023-07-27T03:05:08+0000",
+      "dateStarted": "2023-07-27T03:06:18+0000",
+      "dateFinished": "2023-07-27T03:06:18+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:120"
+    },
+    {
+      "text": "%md\n## GRAFICA PASTEL SEGUN EL SERVICIO HIGIENICO",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:06:39+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>GRAFICA PASTEL SEGUN EL SERVICIO HIGIENICO</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427143933_1446014319",
+      "id": "paragraph_1690427143933_1446014319",
+      "dateCreated": "2023-07-27T03:05:43+0000",
+      "dateStarted": "2023-07-27T03:06:39+0000",
+      "dateFinished": "2023-07-27T03:06:39+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:121"
+    },
+    {
+      "text": "z.show(innerTipoServicio.select($\"tipo\", $\"count\"))",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-27T03:26:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tipo": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "tipo",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tipo\tcount\nExcusado y acantarillado\t19780\nExcusado y pozo septico\t5522\nExcusado y pozo ciego\t589\nLetrina\t128\nNo tiene\t561\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=10",
+              "$$hashKey": "object:2462"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=12",
+              "$$hashKey": "object:2463"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1690427199736_1817235681",
+      "id": "paragraph_1690427199736_1817235681",
+      "dateCreated": "2023-07-27T03:06:39+0000",
+      "dateStarted": "2023-07-27T03:07:06+0000",
+      "dateFinished": "2023-07-27T03:07:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:122"
+    }
+  ],
+  "name": "Avance3 - Final",
+  "id": "2J5UY3N5S",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark-shared_process": [
+      {
+        "name": "dataAsJSON2",
+        "object": [
+          "{\"tipoVivienda\":\"Casa o villa\",\"Empresa eléctrica pública\":7799,\"Ninguno\":6,\"Planta eléctrica privada\":16,\"Vela, candil, mechero, gas\":6}",
+          "{\"tipoVivienda\":\"Departamento\",\"Empresa eléctrica pública\":3400,\"Ninguno\":0,\"Planta eléctrica privada\":9,\"Vela, candil, mechero, gas\":1}",
+          "{\"tipoVivienda\":\"Mediagua\",\"Empresa eléctrica pública\":412,\"Ninguno\":0,\"Planta eléctrica privada\":2,\"Vela, candil, mechero, gas\":1}",
+          "{\"tipoVivienda\":\"Choza\",\"Empresa eléctrica pública\":2,\"Ninguno\":0,\"Planta eléctrica privada\":0,\"Vela, candil, mechero, gas\":2}",
+          "{\"tipoVivienda\":\"Rancho, covacha\",\"Empresa eléctrica pública\":532,\"Ninguno\":3,\"Planta eléctrica privada\":8,\"Vela, candil, mechero, gas\":20}",
+          "{\"tipoVivienda\":\"Cuartos en casa de inquilinato\",\"Empresa eléctrica pública\":315,\"Ninguno\":0,\"Planta eléctrica privada\":0,\"Vela, candil, mechero, gas\":0}"
+        ],
+        "noteId": "2J5UY3N5S"
+      }
+    ]
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Proyecto Integrador/Avance3 - Final"
+}

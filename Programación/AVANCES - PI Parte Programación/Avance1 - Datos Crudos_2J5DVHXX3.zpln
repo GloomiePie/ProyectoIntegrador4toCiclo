@@ -1,0 +1,3878 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val data = spark\n    .read\n    .option(\"inferSchema\", \"true\")\n    .option(\"header\", \"true\")\n    .option(\"delimiter\", \";\")\n    .csv(\"/workspace/zeppelin-paavanzada/enemdu_vivienda_hogar_2023_I_trimestre.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:35:07+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [area: int, ciudad: int ... 55 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=48",
+              "$$hashKey": "object:1942"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=49",
+              "$$hashKey": "object:1943"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687302524474_53198789",
+      "id": "paragraph_1687302524474_53198789",
+      "dateCreated": "2023-06-20T23:08:44+0000",
+      "dateStarted": "2023-06-26T17:35:07+0000",
+      "dateFinished": "2023-06-26T17:35:08+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:90"
+    },
+    {
+      "text": "val data2 = data\n    .withColumnRenamed(\"vi01\", \"ViaAccesoVivienda\")\n    .withColumnRenamed(\"vi02\", \"tipoVivienda\")\n    .withColumnRenamed(\"vi03a\", \"materialTecho\")\n    .withColumnRenamed(\"vi03b\", \"estadoTecho\")\n    .withColumnRenamed(\"vi04a\", \"materialPiso\")\n    .withColumnRenamed(\"vi04b\", \"estadoPiso\")\n    .withColumnRenamed(\"vi05a\", \"materialParedes\")\n    .withColumnRenamed(\"vi05b\", \"estadoParedes\")\n    .withColumnRenamed(\"vi06\", \"numeroCuartos\")\n    .withColumnRenamed(\"vi07\", \"numeroDormitorios\")\n    .withColumnRenamed(\"vi07a\", \"numeroCuartosNegocio\")\n    .withColumnRenamed(\"vi07b\", \"cuartoExcCocinar\")\n    .withColumnRenamed(\"vi08\", \"materialConCocinan\")\n    .withColumnRenamed(\"vi09\", \"tipoServicioHigienico\")\n    .withColumnRenamed(\"vi09a\", \"noPoseeServicioHigienico\")\n    .withColumnRenamed(\"vi09b\", \"tipoInstalacionSanitaria\")\n    .withColumnRenamed(\"vi10\", \"obtencionDeAgua\") \n    .withColumnRenamed(\"vi101\", \"poseeMedidorDeAgua\")\n    .withColumnRenamed(\"vi102\", \"extraeDeLaJuntaDeAgua\")\n    .withColumnRenamed(\"vi10a\", \"elAguaRecibidaEs\")\n    .withColumnRenamed(\"vi11\", \"elServicioDeDuchaEs\")\n    .withColumnRenamed(\"vi12\", \"tipoAlumbrado\")\n    .withColumnRenamed(\"vi13\", \"eliminacionDeBasura\")\n    .withColumnRenamed(\"vi14\", \"tenenciaVivienda\")\n    .withColumnRenamed(\"vi141\", \"pagoMensualArriendo\")\n    .withColumnRenamed(\"vi142\", \"pagoIncluyeServicioAgua\")\n    .withColumnRenamed(\"vi143\", \"pagoIncluyeServicioLuz\")\n    .withColumnRenamed(\"vi144\", \"relacionParentescoPropietario\")\n    .withColumnRenamed(\"vi1511\", \"tieneVehiculos\")\n    .withColumnRenamed(\"vi1521\", \"cuantosVehiculosTiene\")\n    .withColumnRenamed(\"vi1512\", \"tieneMotos\")\n    .withColumnRenamed(\"vi1522\", \"cuantosMotosTiene\")\n    .withColumnRenamed(\"vi1531\", \"abastecimientoConSuper\")\n    .withColumnRenamed(\"vi1541\", \"gastoCombustibleSuper\")\n    .withColumnRenamed(\"vi1532\", \"abastecimientoExtra\")\n    .withColumnRenamed(\"vi1542\", \"gastoCombustibleExtra\")\n    .withColumnRenamed(\"vi1533\", \"abastecimientoDiesel\")\n    .withColumnRenamed(\"vi1543\", \"gastoCombustibleDiesel\")\n    .withColumnRenamed(\"vi1534\", \"abastecimientoEcopais\")\n    .withColumnRenamed(\"vi1544\", \"gastoCombustiblePais\")\n    .withColumnRenamed(\"vi1535\", \"abastecimientoElectricidad\")\n    .withColumnRenamed(\"vi1545\", \"gastoElectricidad\")\n    .withColumnRenamed(\"vi1536\", \"abastecimientoGas\")\n    .withColumnRenamed(\"vi1546\", \"gastoGas\")\n    .drop(\"panelm\")\n    .drop(\"estrato\")\n    .drop(\"upm\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:35:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [area: int, ciudad: int ... 52 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687302541112_1202286779",
+      "id": "paragraph_1687302541112_1202286779",
+      "dateCreated": "2023-06-20T23:09:01+0000",
+      "dateStarted": "2023-06-26T17:35:32+0000",
+      "dateFinished": "2023-06-26T17:35:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:91"
+    },
+    {
+      "text": "%md\n# Análisis Estadístico Con Datos Crudos\nEl análisis estadístico de datos crudos es una parte fundamental en el procesamiento y comprensión de la información. Mediante diversas técnicas y herramientas estadísticas, es posible extraer conocimiento y patrones ocultos en los datos",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-02T17:39:25+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Análisis Estadístico Con Datos Crudos</h1>\n<p>El análisis estadístico de datos crudos es una parte fundamental en el procesamiento y comprensión de la información. Mediante diversas técnicas y herramientas estadísticas, es posible extraer conocimiento y patrones ocultos en los datos</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687304653548_1085406737",
+      "id": "paragraph_1687304653548_1085406737",
+      "dateCreated": "2023-06-20T23:44:13+0000",
+      "dateStarted": "2023-06-21T00:04:32+0000",
+      "dateFinished": "2023-06-21T00:04:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:92"
+    },
+    {
+      "text": "val area = data2\r\n  .groupBy(\"area\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n \r\n data2.select(\"area\").count()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T20:17:27+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true,
+        "tableHide": false,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+-----+\n|area|count|\n+----+-----+\n|   1|19696|\n|   2| 6884|\n+----+-----+\n\n\u001b[1m\u001b[34marea\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres12\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=44",
+              "$$hashKey": "object:2073"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=45",
+              "$$hashKey": "object:2074"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=46",
+              "$$hashKey": "object:2075"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=47",
+              "$$hashKey": "object:2076"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687304732177_1742607212",
+      "id": "paragraph_1687304732177_1742607212",
+      "dateCreated": "2023-06-20T23:45:32+0000",
+      "dateStarted": "2023-06-20T23:56:41+0000",
+      "dateFinished": "2023-06-20T23:56:42+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:93"
+    },
+    {
+      "text": "val hogar = data2\r\n  .groupBy(\"Hogar\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\n data2.select(\"hogar\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-20T23:56:37+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+-----+\n|Hogar|count|\n+-----+-----+\n|    1|26433|\n|    2|  116|\n|    3|   23|\n|    4|    7|\n|    5|    1|\n+-----+-----+\n\n\u001b[1m\u001b[34mhogar\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres11\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=40",
+              "$$hashKey": "object:2134"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=41",
+              "$$hashKey": "object:2135"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=42",
+              "$$hashKey": "object:2136"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=43",
+              "$$hashKey": "object:2137"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687304849686_262025313",
+      "id": "paragraph_1687304849686_262025313",
+      "dateCreated": "2023-06-20T23:47:29+0000",
+      "dateStarted": "2023-06-20T23:56:37+0000",
+      "dateFinished": "2023-06-20T23:56:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:94"
+    },
+    {
+      "text": "val hogar = data2\r\n  .groupBy(\"ciudad\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show(5);\r\n  \r\n println(\"Los encuestados son de \" + data2.select(\"ciudad\").distinct.count() + \" ciudades diferentes\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-20T23:56:34+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------+-----+\n|ciudad|count|\n+------+-----+\n|170150| 2818|\n| 90150| 2637|\n| 70150| 2208|\n| 10150| 1931|\n|180150| 1754|\n+------+-----+\nonly showing top 5 rows\n\nLos encuestados son de 599 ciudades diferentes\n\u001b[1m\u001b[34mhogar\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=35",
+              "$$hashKey": "object:2195"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=36",
+              "$$hashKey": "object:2196"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=37",
+              "$$hashKey": "object:2197"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=38",
+              "$$hashKey": "object:2198"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=39",
+              "$$hashKey": "object:2199"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687304975016_483534066",
+      "id": "paragraph_1687304975016_483534066",
+      "dateCreated": "2023-06-20T23:49:35+0000",
+      "dateStarted": "2023-06-20T23:56:34+0000",
+      "dateFinished": "2023-06-20T23:56:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:95"
+    },
+    {
+      "text": "println(\"Existen \" + data2.select(\"conglomerado\").distinct.count() + \" conglomerados diferentes\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-20T23:58:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Existen 2175 conglomerados diferentes\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=48",
+              "$$hashKey": "object:2261"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=49",
+              "$$hashKey": "object:2262"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=50",
+              "$$hashKey": "object:2263"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305138698_760029451",
+      "id": "paragraph_1687305138698_760029451",
+      "dateCreated": "2023-06-20T23:52:18+0000",
+      "dateStarted": "2023-06-20T23:58:09+0000",
+      "dateFinished": "2023-06-20T23:58:10+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:96"
+    },
+    {
+      "text": "val preViaAccesoVivienda = data2\r\n  .groupBy(\"ViaAccesoVivienda\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"ViaAccesoVivienda\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:00:49+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+-----+\n|ViaAccesoVivienda|count|\n+-----------------+-----+\n|                1|19060|\n|                3| 6214|\n|                4|  633|\n|                2|  552|\n|                5|   62|\n|                6|   59|\n+-----------------+-----+\n\n\u001b[1m\u001b[34mpreViaAccesoVivienda\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres15\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=55",
+              "$$hashKey": "object:2317"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=56",
+              "$$hashKey": "object:2318"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=57",
+              "$$hashKey": "object:2319"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=58",
+              "$$hashKey": "object:2320"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305368445_308004354",
+      "id": "paragraph_1687305368445_308004354",
+      "dateCreated": "2023-06-20T23:56:08+0000",
+      "dateStarted": "2023-06-21T00:00:49+0000",
+      "dateFinished": "2023-06-21T00:00:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:97"
+    },
+    {
+      "text": "val pretipoVivienda = data2\r\n  .groupBy(\"tipoVivienda\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"tipoVivienda\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:01:07+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+-----+\n|tipoVivienda|count|\n+------------+-----+\n|           1|15714|\n|           2| 8057|\n|           5| 1317|\n|           4|  808|\n|           3|  678|\n|           6|    6|\n+------------+-----+\n\n\u001b[1m\u001b[34mpretipoVivienda\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres16\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=59",
+              "$$hashKey": "object:2378"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=60",
+              "$$hashKey": "object:2379"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=61",
+              "$$hashKey": "object:2380"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=62",
+              "$$hashKey": "object:2381"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305623802_1948596985",
+      "id": "paragraph_1687305623802_1948596985",
+      "dateCreated": "2023-06-21T00:00:23+0000",
+      "dateStarted": "2023-06-21T00:01:02+0000",
+      "dateFinished": "2023-06-21T00:01:02+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:98"
+    },
+    {
+      "text": "val prematerialTecho = data2\r\n  .groupBy(\"materialTecho\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"materialTecho\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:02:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+-----+\n|materialTecho|count|\n+-------------+-----+\n|            3|10341|\n|            1| 9052|\n|            2| 4597|\n|            4| 2046|\n|            6|  515|\n|            5|   29|\n+-------------+-----+\n\n\u001b[1m\u001b[34mprematerialTecho\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres17\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=63",
+              "$$hashKey": "object:2439"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=64",
+              "$$hashKey": "object:2440"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=65",
+              "$$hashKey": "object:2441"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=66",
+              "$$hashKey": "object:2442"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305662475_850877094",
+      "id": "paragraph_1687305662475_850877094",
+      "dateCreated": "2023-06-21T00:01:02+0000",
+      "dateStarted": "2023-06-21T00:01:36+0000",
+      "dateFinished": "2023-06-21T00:01:37+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:99"
+    },
+    {
+      "text": "val preEstadoTecho = data2\r\n  .groupBy(\"estadoTecho\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"estadoTecho\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:02:49+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 2,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------+-----+\n|estadoTecho|count|\n+-----------+-----+\n|          2|11714|\n|          1|11499|\n|          3| 3367|\n+-----------+-----+\n\n\u001b[1m\u001b[34mpreEstadoTecho\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres18\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=67",
+              "$$hashKey": "object:2500"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=68",
+              "$$hashKey": "object:2501"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=69",
+              "$$hashKey": "object:2502"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=70",
+              "$$hashKey": "object:2503"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305696541_2018003173",
+      "id": "paragraph_1687305696541_2018003173",
+      "dateCreated": "2023-06-21T00:01:36+0000",
+      "dateStarted": "2023-06-21T00:02:45+0000",
+      "dateFinished": "2023-06-21T00:02:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:100"
+    },
+    {
+      "text": "val preMaterialPiso = data2\r\n  .groupBy(\"materialPiso\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"materialPiso\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:04:16+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+-----+\n|materialPiso|count|\n+------------+-----+\n|           2|11356|\n|           4| 8009|\n|           1| 4120|\n|           5| 2356|\n|           7|  625|\n|           3|   93|\n|           8|   11|\n|           6|   10|\n+------------+-----+\n\n\u001b[1m\u001b[34mpreMaterialPiso\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres19\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=71",
+              "$$hashKey": "object:2561"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=72",
+              "$$hashKey": "object:2562"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=73",
+              "$$hashKey": "object:2563"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=74",
+              "$$hashKey": "object:2564"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305765626_1856555559",
+      "id": "paragraph_1687305765626_1856555559",
+      "dateCreated": "2023-06-21T00:02:45+0000",
+      "dateStarted": "2023-06-21T00:03:47+0000",
+      "dateFinished": "2023-06-21T00:03:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:101"
+    },
+    {
+      "text": "val preEstadoPiso = data2\r\n  .groupBy(\"estadoPiso\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"estadoPiso\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:05:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+-----+\n|estadoPiso|count|\n+----------+-----+\n|         2|12206|\n|         1|11699|\n|         3| 2675|\n+----------+-----+\n\n\u001b[1m\u001b[34mpreEstadoPiso\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres20\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=75",
+              "$$hashKey": "object:2622"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=76",
+              "$$hashKey": "object:2623"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=77",
+              "$$hashKey": "object:2624"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=78",
+              "$$hashKey": "object:2625"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305827385_1245105044",
+      "id": "paragraph_1687305827385_1245105044",
+      "dateCreated": "2023-06-21T00:03:47+0000",
+      "dateStarted": "2023-06-21T00:05:11+0000",
+      "dateFinished": "2023-06-21T00:05:12+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:102"
+    },
+    {
+      "text": "val preMaterialParedes = data2\r\n  .groupBy(\"materialParedes\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"materialParedes\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:09:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+-----+\n|materialParedes|count|\n+---------------+-----+\n|              1|23432|\n|              4| 1510|\n|              3| 1046|\n|              6|  359|\n|              2|  114|\n|              5|   92|\n|              7|   27|\n+---------------+-----+\n\n\u001b[1m\u001b[34mpreMaterialParedes\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres21\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=79",
+              "$$hashKey": "object:2683"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=80",
+              "$$hashKey": "object:2684"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=81",
+              "$$hashKey": "object:2685"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=82",
+              "$$hashKey": "object:2686"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687305911936_82782035",
+      "id": "paragraph_1687305911936_82782035",
+      "dateCreated": "2023-06-21T00:05:11+0000",
+      "dateStarted": "2023-06-21T00:08:57+0000",
+      "dateFinished": "2023-06-21T00:08:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:103"
+    },
+    {
+      "text": "val preEstadoParedes = data2\r\n  .groupBy(\"estadoParedes\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"estadoParedes\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:17:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+-----+\n|estadoParedes|count|\n+-------------+-----+\n|            3| 2082|\n|            2|12295|\n|            1|12203|\n+-------------+-----+\n\n\u001b[1m\u001b[34mpreEstadoParedes\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres22\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=83",
+              "$$hashKey": "object:2744"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=84",
+              "$$hashKey": "object:2745"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=85",
+              "$$hashKey": "object:2746"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=86",
+              "$$hashKey": "object:2747"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306137816_1560503469",
+      "id": "paragraph_1687306137816_1560503469",
+      "dateCreated": "2023-06-21T00:08:57+0000",
+      "dateStarted": "2023-06-21T00:10:59+0000",
+      "dateFinished": "2023-06-21T00:10:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:104"
+    },
+    {
+      "text": "data2.describe(\"numeroCuartos\", \"numeroDormitorios\", \"numeroCuartosNegocio\", \"cuartoExcCocinar\").show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:15:26+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------------------+------------------+--------------------+------------------+\n|summary|     numeroCuartos| numeroDormitorios|numeroCuartosNegocio|  cuartoExcCocinar|\n+-------+------------------+------------------+--------------------+------------------+\n|  count|             26580|             26580|               26580|             26580|\n|   mean|3.4603837471783296|2.3968773513920243| 0.04334085778781038|1.0399172310007525|\n| stddev|1.3394949568297714|1.0929959562062133| 0.21337138068131398|0.1957684539306393|\n|    min|                 1|                 0|                   0|                 1|\n|    max|                13|                10|                   3|                 2|\n+-------+------------------+------------------+--------------------+------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=87",
+              "$$hashKey": "object:2805"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=88",
+              "$$hashKey": "object:2806"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306259413_346769690",
+      "id": "paragraph_1687306259413_346769690",
+      "dateCreated": "2023-06-21T00:10:59+0000",
+      "dateStarted": "2023-06-21T00:15:26+0000",
+      "dateFinished": "2023-06-21T00:15:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:105"
+    },
+    {
+      "text": "val prematerialConCocinan = data2\r\n  .groupBy(\"materialConCocinan\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"materialConCocinan\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:17:51+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------+-----+\n|materialConCocinan|count|\n+------------------+-----+\n|                 1|25096|\n|                 2|  695|\n|                 3|  540|\n|                 4|  249|\n+------------------+-----+\n\n\u001b[1m\u001b[34mprematerialConCocinan\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres24\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=89",
+              "$$hashKey": "object:2856"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=90",
+              "$$hashKey": "object:2857"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=91",
+              "$$hashKey": "object:2858"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=92",
+              "$$hashKey": "object:2859"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306526886_2063466246",
+      "id": "paragraph_1687306526886_2063466246",
+      "dateCreated": "2023-06-21T00:15:26+0000",
+      "dateStarted": "2023-06-21T00:17:42+0000",
+      "dateFinished": "2023-06-21T00:17:42+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:106"
+    },
+    {
+      "text": "val pretipoServicioHigienico = data2\r\n  .groupBy(\"tipoServicioHigienico\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"tipoServicioHigienico\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:19:20+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+-----+\n|tipoServicioHigienico|count|\n+---------------------+-----+\n|                    1|19780|\n|                    2| 5522|\n|                    3|  589|\n|                    5|  561|\n|                    4|  128|\n+---------------------+-----+\n\n\u001b[1m\u001b[34mpretipoServicioHigienico\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres25\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=93",
+              "$$hashKey": "object:2917"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=94",
+              "$$hashKey": "object:2918"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=95",
+              "$$hashKey": "object:2919"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=96",
+              "$$hashKey": "object:2920"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306662455_2028668956",
+      "id": "paragraph_1687306662455_2028668956",
+      "dateCreated": "2023-06-21T00:17:42+0000",
+      "dateStarted": "2023-06-21T00:19:05+0000",
+      "dateFinished": "2023-06-21T00:19:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:107"
+    },
+    {
+      "text": "val prenoPoseeServicioHigienico = data2\r\n  .groupBy(\"noPoseeServicioHigienico\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.filter(expr(\"noPoseeServicioHigienico > 0\")).count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:34:15+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------------+-----+\n|noPoseeServicioHigienico|count|\n+------------------------+-----+\n|                        |26019|\n|                       2|  385|\n|                       3|  163|\n|                       1|   13|\n+------------------------+-----+\n\n\u001b[1m\u001b[34mprenoPoseeServicioHigienico\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres44\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 561\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=148",
+              "$$hashKey": "object:2978"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=149",
+              "$$hashKey": "object:2979"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=150",
+              "$$hashKey": "object:2980"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=151",
+              "$$hashKey": "object:2981"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306745262_333745636",
+      "id": "paragraph_1687306745262_333745636",
+      "dateCreated": "2023-06-21T00:19:05+0000",
+      "dateStarted": "2023-06-21T00:33:56+0000",
+      "dateFinished": "2023-06-21T00:33:56+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:108"
+    },
+    {
+      "text": "val pretipoInstalacionSanitaria = data2\r\n  .groupBy(\"tipoInstalacionSanitaria\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.filter(expr(\"tipoInstalacionSanitaria > 0\")).count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:35:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------------+-----+\n|tipoInstalacionSanitaria|count|\n+------------------------+-----+\n|                        |26417|\n|                       2|   82|\n|                       1|   71|\n|                       3|    8|\n|                       4|    2|\n+------------------------+-----+\n\n\u001b[1m\u001b[34mpretipoInstalacionSanitaria\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres45\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 163\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=152",
+              "$$hashKey": "object:3039"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=153",
+              "$$hashKey": "object:3040"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=154",
+              "$$hashKey": "object:3041"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=155",
+              "$$hashKey": "object:3042"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687306826435_939196604",
+      "id": "paragraph_1687306826435_939196604",
+      "dateCreated": "2023-06-21T00:20:26+0000",
+      "dateStarted": "2023-06-21T00:34:49+0000",
+      "dateFinished": "2023-06-21T00:34:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:109"
+    },
+    {
+      "text": "val preobtencionDeAgua = data2\r\n  .groupBy(\"obtencionDeAgua\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"obtencionDeAgua\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:42:18+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+-----+\n|obtencionDeAgua|count|\n+---------------+-----+\n|              1|23435|\n|              3| 1431|\n|              5|  865|\n|              6|  357|\n|              4|  259|\n|              7|  224|\n|              2|    9|\n+---------------+-----+\n\n\u001b[1m\u001b[34mpreobtencionDeAgua\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres50\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=170",
+              "$$hashKey": "object:3100"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=171",
+              "$$hashKey": "object:3101"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=172",
+              "$$hashKey": "object:3102"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=173",
+              "$$hashKey": "object:3103"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687307689948_1512663956",
+      "id": "paragraph_1687307689948_1512663956",
+      "dateCreated": "2023-06-21T00:34:49+0000",
+      "dateStarted": "2023-06-21T00:41:54+0000",
+      "dateFinished": "2023-06-21T00:41:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:110"
+    },
+    {
+      "text": "val preposeeMedidorDeAgua = data2\r\n  .groupBy(\"poseeMedidorDeAgua\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"poseeMedidorDeAgua > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:45:38+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------+-----+\n|poseeMedidorDeAgua|count|\n+------------------+-----+\n|                  |25140|\n|                 2|  875|\n|                 1|  565|\n+------------------+-----+\n\nSOLO RESPONDIERON 1440 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreposeeMedidorDeAgua\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=182",
+              "$$hashKey": "object:3161"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=183",
+              "$$hashKey": "object:3162"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=184",
+              "$$hashKey": "object:3163"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=185",
+              "$$hashKey": "object:3164"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308024182_1527524015",
+      "id": "paragraph_1687308024182_1527524015",
+      "dateCreated": "2023-06-21T00:40:24+0000",
+      "dateStarted": "2023-06-21T00:45:31+0000",
+      "dateFinished": "2023-06-21T00:45:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:111"
+    },
+    {
+      "text": "val preextraeDeLaJuntaDeAgua = data2\r\n  .groupBy(\"extraeDeLaJuntaDeAgua\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"extraeDeLaJuntaDeAgua > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:47:17+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+-----+\n|extraeDeLaJuntaDeAgua|count|\n+---------------------+-----+\n|                     |25140|\n|                    2|  841|\n|                    1|  599|\n+---------------------+-----+\n\nSOLO RESPONDIERON 1440 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreextraeDeLaJuntaDeAgua\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=190",
+              "$$hashKey": "object:3222"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=191",
+              "$$hashKey": "object:3223"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=192",
+              "$$hashKey": "object:3224"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=193",
+              "$$hashKey": "object:3225"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308161890_1294497471",
+      "id": "paragraph_1687308161890_1294497471",
+      "dateCreated": "2023-06-21T00:42:41+0000",
+      "dateStarted": "2023-06-21T00:46:32+0000",
+      "dateFinished": "2023-06-21T00:46:33+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:112"
+    },
+    {
+      "text": "val preelAguaRecibidaEs = data2\r\n  .groupBy(\"elAguaRecibidaEs\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n\r\n\r\n\r\n\r\n\r\n\r\ndata2.select(\"elAguaRecibidaEs\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:02:53+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------+-----+\n|elAguaRecibidaEs|count|\n+----------------+-----+\n|               1|22814|\n|               2| 2679|\n|               4| 1059|\n|               3|   28|\n+----------------+-----+\n\n\u001b[1m\u001b[34mpreelAguaRecibidaEs\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres77\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=264",
+              "$$hashKey": "object:3283"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=265",
+              "$$hashKey": "object:3284"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=266",
+              "$$hashKey": "object:3285"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=267",
+              "$$hashKey": "object:3286"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308371337_734452555",
+      "id": "paragraph_1687308371337_734452555",
+      "dateCreated": "2023-06-21T00:46:11+0000",
+      "dateStarted": "2023-06-21T01:02:53+0000",
+      "dateFinished": "2023-06-21T01:02:53+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:113"
+    },
+    {
+      "text": "val preelServicioDeDuchaEs = data2\r\n  .groupBy(\"elServicioDeDuchaEs\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"elServicioDeDuchaEs\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:51:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-----+\n|elServicioDeDuchaEs|count|\n+-------------------+-----+\n|                  1|24354|\n|                  3| 1367|\n|                  2|  859|\n+-------------------+-----+\n\n\u001b[1m\u001b[34mpreelServicioDeDuchaEs\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres57\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=198",
+              "$$hashKey": "object:3344"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=199",
+              "$$hashKey": "object:3345"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=200",
+              "$$hashKey": "object:3346"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=201",
+              "$$hashKey": "object:3347"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308493210_1971141495",
+      "id": "paragraph_1687308493210_1971141495",
+      "dateCreated": "2023-06-21T00:48:13+0000",
+      "dateStarted": "2023-06-21T00:50:32+0000",
+      "dateFinished": "2023-06-21T00:50:33+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:114"
+    },
+    {
+      "text": "val pretipoAlumbrado = data2\r\n  .groupBy(\"tipoAlumbrado\")\r\n  .count()\r\n  .orderBy(desc(\"count\"))\r\n  .show();\r\n  \r\ndata2.select(\"tipoAlumbrado\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:53:35+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+-----+\n|tipoAlumbrado|count|\n+-------------+-----+\n|            1|26368|\n|            3|  117|\n|            2|   73|\n|            4|   22|\n+-------------+-----+\n\n\u001b[1m\u001b[34mpretipoAlumbrado\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres65\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=230",
+              "$$hashKey": "object:3405"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=231",
+              "$$hashKey": "object:3406"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=232",
+              "$$hashKey": "object:3407"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=233",
+              "$$hashKey": "object:3408"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308632721_1308738148",
+      "id": "paragraph_1687308632721_1308738148",
+      "dateCreated": "2023-06-21T00:50:32+0000",
+      "dateStarted": "2023-06-21T00:52:50+0000",
+      "dateFinished": "2023-06-21T00:52:51+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:115"
+    },
+    {
+      "text": "val preEliminacionDeBasura = data2\n  .groupBy(\"eliminacionDeBasura\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \ndata2.select(\"eliminacionDeBasura\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:55:11+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-----+\n|eliminacionDeBasura|count|\n+-------------------+-----+\n|                  2|24358|\n|                  4| 1927|\n|                  3|  179|\n|                  1|  108|\n|                  5|    8|\n+-------------------+-----+\n\n\u001b[1m\u001b[34mpreEliminacionDeBasura\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres66\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=234",
+              "$$hashKey": "object:3466"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=235",
+              "$$hashKey": "object:3467"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=236",
+              "$$hashKey": "object:3468"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=237",
+              "$$hashKey": "object:3469"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308770925_583209397",
+      "id": "paragraph_1687308770925_583209397",
+      "dateCreated": "2023-06-21T00:52:50+0000",
+      "dateStarted": "2023-06-21T00:54:46+0000",
+      "dateFinished": "2023-06-21T00:54:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:116"
+    },
+    {
+      "text": "val pretenenciaVivienda = data2\n  .groupBy(\"tenenciaVivienda\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \ndata2.select(\"tenenciaVivienda\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T00:56:36+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------+-----+\n|tenenciaVivienda|count|\n+----------------+-----+\n|               4|16680|\n|               1| 4907|\n|               5| 4134|\n|               3|  580|\n|               6|  256|\n|               2|   15|\n|               7|    8|\n+----------------+-----+\n\n\u001b[1m\u001b[34mpretenenciaVivienda\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres67\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=238",
+              "$$hashKey": "object:3527"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=239",
+              "$$hashKey": "object:3528"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=240",
+              "$$hashKey": "object:3529"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=241",
+              "$$hashKey": "object:3530"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308886908_904261493",
+      "id": "paragraph_1687308886908_904261493",
+      "dateCreated": "2023-06-21T00:54:46+0000",
+      "dateStarted": "2023-06-21T00:56:24+0000",
+      "dateFinished": "2023-06-21T00:56:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:117"
+    },
+    {
+      "text": "data2.filter(expr(\"pagoMensualArriendo < 999999\")).describe(\"pagoMensualArriendo\").show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:00:57+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-------------------+\n|summary|pagoMensualArriendo|\n+-------+-------------------+\n|  count|              26566|\n|   mean|  165.9691711209817|\n| stddev|  627.1057742432758|\n|    min|                 10|\n|    max|              99999|\n+-------+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=248",
+              "$$hashKey": "object:3588"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=249",
+              "$$hashKey": "object:3589"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687308984344_711766512",
+      "id": "paragraph_1687308984344_711766512",
+      "dateCreated": "2023-06-21T00:56:24+0000",
+      "dateStarted": "2023-06-21T01:00:51+0000",
+      "dateFinished": "2023-06-21T01:00:51+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:118"
+    },
+    {
+      "text": "data2.filter(expr(\"pagoMensualArriendo < 99999\")).describe(\"pagoMensualArriendo\").show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:01:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-------------------+\n|summary|pagoMensualArriendo|\n+-------+-------------------+\n|  count|              26565|\n|   mean| 162.21110483719178|\n| stddev| 134.42121128571992|\n|    min|                 10|\n|    max|               5000|\n+-------+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=250",
+              "$$hashKey": "object:3639"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=251",
+              "$$hashKey": "object:3640"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309091744_2092771474",
+      "id": "paragraph_1687309091744_2092771474",
+      "dateCreated": "2023-06-21T00:58:11+0000",
+      "dateStarted": "2023-06-21T01:01:03+0000",
+      "dateFinished": "2023-06-21T01:01:03+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:119"
+    },
+    {
+      "text": "val prepagoIncluyeServicioAgua = data2\n  .groupBy(\"pagoIncluyeServicioAgua\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"pagoIncluyeServicioAgua > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:03:41+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------------+-----+\n|pagoIncluyeServicioAgua|count|\n+-----------------------+-----+\n|                       |21673|\n|                      2| 3825|\n|                      1| 1082|\n+-----------------------+-----+\n\nSOLO RESPONDIERON 4907 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mprepagoIncluyeServicioAgua\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=268",
+              "$$hashKey": "object:3690"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=269",
+              "$$hashKey": "object:3691"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=270",
+              "$$hashKey": "object:3692"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=271",
+              "$$hashKey": "object:3693"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309263237_1624327376",
+      "id": "paragraph_1687309263237_1624327376",
+      "dateCreated": "2023-06-21T01:01:03+0000",
+      "dateStarted": "2023-06-21T01:03:32+0000",
+      "dateFinished": "2023-06-21T01:03:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:120"
+    },
+    {
+      "text": "val prepagoIncluyeServicioLuz = data2\n  .groupBy(\"pagoIncluyeServicioLuz\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"pagoIncluyeServicioLuz > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:04:21+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------+-----+\n|pagoIncluyeServicioLuz|count|\n+----------------------+-----+\n|                      |21673|\n|                     2| 4140|\n|                     1|  767|\n+----------------------+-----+\n\nSOLO RESPONDIERON 4907 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mprepagoIncluyeServicioLuz\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=272",
+              "$$hashKey": "object:3751"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=273",
+              "$$hashKey": "object:3752"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=274",
+              "$$hashKey": "object:3753"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=275",
+              "$$hashKey": "object:3754"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309340154_822840724",
+      "id": "paragraph_1687309340154_822840724",
+      "dateCreated": "2023-06-21T01:02:20+0000",
+      "dateStarted": "2023-06-21T01:04:10+0000",
+      "dateFinished": "2023-06-21T01:04:10+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:121"
+    },
+    {
+      "text": "val prerelacionParentescoPropietario = data2\n  .groupBy(\"relacionParentescoPropietario\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"relacionParentescoPropietario > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:05:20+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------------------+-----+\n|relacionParentescoPropietario|count|\n+-----------------------------+-----+\n|                             |21673|\n|                            2| 4378|\n|                            1|  529|\n+-----------------------------+-----+\n\nSOLO RESPONDIERON 4907 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mprerelacionParentescoPropietario\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=280",
+              "$$hashKey": "object:3812"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=281",
+              "$$hashKey": "object:3813"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=282",
+              "$$hashKey": "object:3814"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=283",
+              "$$hashKey": "object:3815"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309450567_1512591813",
+      "id": "paragraph_1687309450567_1512591813",
+      "dateCreated": "2023-06-21T01:04:10+0000",
+      "dateStarted": "2023-06-21T01:05:06+0000",
+      "dateFinished": "2023-06-21T01:05:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:122"
+    },
+    {
+      "text": "val pretieneVehiculos = data2\n  .groupBy(\"tieneVehiculos\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \n  \n  \n  \ndata2.select(\"tieneVehiculos\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:38:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------+-----+\n|tieneVehiculos|count|\n+--------------+-----+\n|             2|19721|\n|             1| 6859|\n+--------------+-----+\n\n\u001b[1m\u001b[34mpretieneVehiculos\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres86\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=300",
+              "$$hashKey": "object:3873"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=301",
+              "$$hashKey": "object:3874"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=302",
+              "$$hashKey": "object:3875"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=303",
+              "$$hashKey": "object:3876"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309491825_333647359",
+      "id": "paragraph_1687309491825_333647359",
+      "dateCreated": "2023-06-21T01:04:51+0000",
+      "dateStarted": "2023-06-21T01:08:05+0000",
+      "dateFinished": "2023-06-21T01:08:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:123"
+    },
+    {
+      "text": "val precuantosVehiculosTiene = data2\n  .groupBy(\"cuantosVehiculosTiene\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"cuantosVehiculosTiene > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:07:49+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+-----+\n|cuantosVehiculosTiene|count|\n+---------------------+-----+\n|                     |19721|\n|                    1| 6039|\n|                    2|  721|\n|                    3|   84|\n|                    4|   11|\n|                    6|    2|\n|                    5|    2|\n+---------------------+-----+\n\nSOLO RESPONDIERON 6859 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mprecuantosVehiculosTiene\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=292",
+              "$$hashKey": "object:3934"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=293",
+              "$$hashKey": "object:3935"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=294",
+              "$$hashKey": "object:3936"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=295",
+              "$$hashKey": "object:3937"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309559226_2023866664",
+      "id": "paragraph_1687309559226_2023866664",
+      "dateCreated": "2023-06-21T01:05:59+0000",
+      "dateStarted": "2023-06-21T01:07:32+0000",
+      "dateFinished": "2023-06-21T01:07:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:124"
+    },
+    {
+      "text": "val pretieneMotos = data2\n  .groupBy(\"tieneMotos\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \ndata2.select(\"tieneMotos\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:09:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+-----+\n|tieneMotos|count|\n+----------+-----+\n|         2|23800|\n|         1| 2780|\n+----------+-----+\n\n\u001b[1m\u001b[34mpretieneMotos\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres87\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=304",
+              "$$hashKey": "object:3995"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=305",
+              "$$hashKey": "object:3996"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=306",
+              "$$hashKey": "object:3997"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=307",
+              "$$hashKey": "object:3998"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309652454_1609064559",
+      "id": "paragraph_1687309652454_1609064559",
+      "dateCreated": "2023-06-21T01:07:32+0000",
+      "dateStarted": "2023-06-21T01:09:00+0000",
+      "dateFinished": "2023-06-21T01:09:01+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:125"
+    },
+    {
+      "text": "val precuantosMotosTiene = data2\n  .groupBy(\"cuantosMotosTiene\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"cuantosMotosTiene > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:12:40+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+-----+\n|cuantosMotosTiene|count|\n+-----------------+-----+\n|                 |23800|\n|                1| 2614|\n|                2|  149|\n|                3|   14|\n|                4|    3|\n+-----------------+-----+\n\nSOLO RESPONDIERON 2780 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mprecuantosMotosTiene\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=308",
+              "$$hashKey": "object:4056"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=309",
+              "$$hashKey": "object:4057"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=310",
+              "$$hashKey": "object:4058"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=311",
+              "$$hashKey": "object:4059"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309740810_70103826",
+      "id": "paragraph_1687309740810_70103826",
+      "dateCreated": "2023-06-21T01:09:00+0000",
+      "dateStarted": "2023-06-21T01:09:44+0000",
+      "dateFinished": "2023-06-21T01:09:45+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:126"
+    },
+    {
+      "text": "val preabastecimientoConSuper = data2\n  .groupBy(\"abastecimientoConSuper\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \n  \n  \n  \n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoConSuper > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:39:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------+-----+\n|abastecimientoConSuper|count|\n+----------------------+-----+\n|                      |17507|\n|                     2| 8580|\n|                     1|  493|\n+----------------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoConSuper\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=316",
+              "$$hashKey": "object:4117"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=317",
+              "$$hashKey": "object:4118"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=318",
+              "$$hashKey": "object:4119"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=319",
+              "$$hashKey": "object:4120"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687309784997_184713355",
+      "id": "paragraph_1687309784997_184713355",
+      "dateCreated": "2023-06-21T01:09:44+0000",
+      "dateStarted": "2023-06-21T01:14:20+0000",
+      "dateFinished": "2023-06-21T01:14:20+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:127"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoCombustibleSuper < 999 AND gastoCombustibleSuper > 0\")).describe(\"gastoCombustibleSuper\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoCombustibleSuper < 999 AND gastoCombustibleSuper >= 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:25:39+0000",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+---------------------+\n|summary|gastoCombustibleSuper|\n+-------+---------------------+\n|  count|                  491|\n|   mean|    71.88594704684317|\n| stddev|   57.339974534895774|\n|    min|                   10|\n|    max|                   98|\n+-------+---------------------+\n\nSOLO RESPONDIERON 492 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=369",
+              "$$hashKey": "object:4178"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=370",
+              "$$hashKey": "object:4179"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=371",
+              "$$hashKey": "object:4180"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=372",
+              "$$hashKey": "object:4181"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310045115_2096071014",
+      "id": "paragraph_1687310045115_2096071014",
+      "dateCreated": "2023-06-21T01:14:05+0000",
+      "dateStarted": "2023-06-21T01:25:39+0000",
+      "dateFinished": "2023-06-21T01:25:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:128"
+    },
+    {
+      "text": "val preabastecimientoConSuper = data2\n  .groupBy(\"abastecimientoExtra\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoExtra > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:22:53+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-----+\n|abastecimientoExtra|count|\n+-------------------+-----+\n|                   |17507|\n|                  2| 4720|\n|                  1| 4353|\n+-------------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoConSuper\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=345",
+              "$$hashKey": "object:4239"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=346",
+              "$$hashKey": "object:4240"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=347",
+              "$$hashKey": "object:4241"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=348",
+              "$$hashKey": "object:4242"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310117100_29527421",
+      "id": "paragraph_1687310117100_29527421",
+      "dateCreated": "2023-06-21T01:15:17+0000",
+      "dateStarted": "2023-06-21T01:22:46+0000",
+      "dateFinished": "2023-06-21T01:22:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:129"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoCombustibleExtra < 999 AND gastoCombustibleExtra > 0\")).describe(\"gastoCombustibleExtra\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoCombustibleExtra < 999 AND gastoCombustibleExtra > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:25:46+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+---------------------+\n|summary|gastoCombustibleExtra|\n+-------+---------------------+\n|  count|                 4342|\n|   mean|    52.41225241824044|\n| stddev|   37.279163365514854|\n|    min|                   10|\n|    max|                   95|\n+-------+---------------------+\n\nSOLO RESPONDIERON 4351 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=365",
+              "$$hashKey": "object:4300"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=366",
+              "$$hashKey": "object:4301"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=367",
+              "$$hashKey": "object:4302"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=368",
+              "$$hashKey": "object:4303"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310566623_1747140521",
+      "id": "paragraph_1687310566623_1747140521",
+      "dateCreated": "2023-06-21T01:22:46+0000",
+      "dateStarted": "2023-06-21T01:24:52+0000",
+      "dateFinished": "2023-06-21T01:24:52+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:130"
+    },
+    {
+      "text": "val preabastecimientoDiesel = data2\n  .groupBy(\"abastecimientoDiesel\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoDiesel > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:27:37+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+-----+\n|abastecimientoDiesel|count|\n+--------------------+-----+\n|                    |17507|\n|                   2| 8404|\n|                   1|  669|\n+--------------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoDiesel\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=373",
+              "$$hashKey": "object:4361"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=374",
+              "$$hashKey": "object:4362"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=375",
+              "$$hashKey": "object:4363"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=376",
+              "$$hashKey": "object:4364"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310604623_1614467773",
+      "id": "paragraph_1687310604623_1614467773",
+      "dateCreated": "2023-06-21T01:23:24+0000",
+      "dateStarted": "2023-06-21T01:26:18+0000",
+      "dateFinished": "2023-06-21T01:26:18+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:131"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoCombustibleDiesel < 999 AND gastoCombustibleDiesel > 0\")).describe(\"gastoCombustibleDiesel\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoCombustibleDiesel < 999 AND gastoCombustibleDiesel >= 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:33:26+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+----------------------+\n|summary|gastoCombustibleDiesel|\n+-------+----------------------+\n|  count|                   667|\n|   mean|    56.634182908545725|\n| stddev|      49.7704752956578|\n|    min|                     1|\n|    max|                    90|\n+-------+----------------------+\n\nSOLO RESPONDIERON 669 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=405",
+              "$$hashKey": "object:4422"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=406",
+              "$$hashKey": "object:4423"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=407",
+              "$$hashKey": "object:4424"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=408",
+              "$$hashKey": "object:4425"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310778006_199347366",
+      "id": "paragraph_1687310778006_199347366",
+      "dateCreated": "2023-06-21T01:26:18+0000",
+      "dateStarted": "2023-06-21T01:33:26+0000",
+      "dateFinished": "2023-06-21T01:33:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:132"
+    },
+    {
+      "text": "val preabastecimientoEcopais = data2\n  .groupBy(\"abastecimientoEcopais\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoEcopais > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:28:36+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+-----+\n|abastecimientoEcopais|count|\n+---------------------+-----+\n|                     |17507|\n|                    2| 5319|\n|                    1| 3754|\n+---------------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoEcopais\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=381",
+              "$$hashKey": "object:4483"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=382",
+              "$$hashKey": "object:4484"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=383",
+              "$$hashKey": "object:4485"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=384",
+              "$$hashKey": "object:4486"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310837465_940698662",
+      "id": "paragraph_1687310837465_940698662",
+      "dateCreated": "2023-06-21T01:27:17+0000",
+      "dateStarted": "2023-06-21T01:28:23+0000",
+      "dateFinished": "2023-06-21T01:28:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:133"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoCombustiblePais < 999 AND gastoCombustiblePais > 0\")).describe(\"gastoCombustiblePais\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoCombustiblePais < 999 AND gastoCombustiblePais >= 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:33:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+--------------------+\n|summary|gastoCombustiblePais|\n+-------+--------------------+\n|  count|                3750|\n|   mean|  53.434666666666665|\n| stddev|   40.57275815794919|\n|    min|                   1|\n|    max|                  90|\n+-------+--------------------+\n\nSOLO RESPONDIERON 3754 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=401",
+              "$$hashKey": "object:4544"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=402",
+              "$$hashKey": "object:4545"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=403",
+              "$$hashKey": "object:4546"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=404",
+              "$$hashKey": "object:4547"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310903911_1515408605",
+      "id": "paragraph_1687310903911_1515408605",
+      "dateCreated": "2023-06-21T01:28:23+0000",
+      "dateStarted": "2023-06-21T01:33:04+0000",
+      "dateFinished": "2023-06-21T01:33:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:134"
+    },
+    {
+      "text": "val preabastecimientoElectricidad = data2\n  .groupBy(\"abastecimientoElectricidad\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoElectricidad > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:33:48+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------------+-----+\n|abastecimientoElectricidad|count|\n+--------------------------+-----+\n|                          |17507|\n|                         2| 9015|\n|                         1|   58|\n+--------------------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoElectricidad\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=389",
+              "$$hashKey": "object:4605"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=390",
+              "$$hashKey": "object:4606"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=391",
+              "$$hashKey": "object:4607"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=392",
+              "$$hashKey": "object:4608"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687310961358_1597076582",
+      "id": "paragraph_1687310961358_1597076582",
+      "dateCreated": "2023-06-21T01:29:21+0000",
+      "dateStarted": "2023-06-21T01:30:13+0000",
+      "dateFinished": "2023-06-21T01:30:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:135"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoElectricidad < 999 AND gastoElectricidad > 0\")).describe(\"gastoElectricidad\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoElectricidad < 999 AND gastoElectricidad >= 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:36:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------------------+\n|summary| gastoElectricidad|\n+-------+------------------+\n|  count|                57|\n|   mean|12.403508771929825|\n| stddev|12.104986648253107|\n|    min|                 1|\n|    max|                 8|\n+-------+------------------+\n\nSOLO RESPONDIERON 58 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=397",
+              "$$hashKey": "object:4666"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=398",
+              "$$hashKey": "object:4667"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=399",
+              "$$hashKey": "object:4668"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=400",
+              "$$hashKey": "object:4669"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311013801_606194913",
+      "id": "paragraph_1687311013801_606194913",
+      "dateCreated": "2023-06-21T01:30:13+0000",
+      "dateStarted": "2023-06-21T01:32:38+0000",
+      "dateFinished": "2023-06-21T01:32:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:136"
+    },
+    {
+      "text": "val preabastecimientoGas = data2\n  .groupBy(\"abastecimientoGas\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \n  \n  \nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"abastecimientoGas > 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:36:07+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+-----+\n|abastecimientoGas|count|\n+-----------------+-----+\n|                 |17507|\n|                2| 9069|\n|                1|    4|\n+-----------------+-----+\n\nSOLO RESPONDIERON 9073 DE LOS ENCUESTADOS\n\u001b[1m\u001b[34mpreabastecimientoGas\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=409",
+              "$$hashKey": "object:4727"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=410",
+              "$$hashKey": "object:4728"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=411",
+              "$$hashKey": "object:4729"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=412",
+              "$$hashKey": "object:4730"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311108594_1723919287",
+      "id": "paragraph_1687311108594_1723919287",
+      "dateCreated": "2023-06-21T01:31:48+0000",
+      "dateStarted": "2023-06-21T01:34:27+0000",
+      "dateFinished": "2023-06-21T01:34:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:137"
+    },
+    {
+      "text": "data2.filter(expr(\"gastoGas < 999 AND gastoGas > 0\")).describe(\"gastoGas\").show\n\nprintln(\"SOLO RESPONDIERON \" + data2.filter(expr(\"gastoGas < 999 AND gastoGas >= 0\")).count() + \" DE LOS ENCUESTADOS\");",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:36:10+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------+\n|summary|         gastoGas|\n+-------+-----------------+\n|  count|                4|\n|   mean|             21.5|\n| stddev|39.00854607219637|\n|    min|                1|\n|    max|               80|\n+-------+-----------------+\n\nSOLO RESPONDIERON 4 DE LOS ENCUESTADOS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=413",
+              "$$hashKey": "object:4788"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=414",
+              "$$hashKey": "object:4789"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=415",
+              "$$hashKey": "object:4790"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=416",
+              "$$hashKey": "object:4791"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311267664_1759753148",
+      "id": "paragraph_1687311267664_1759753148",
+      "dateCreated": "2023-06-21T01:34:27+0000",
+      "dateStarted": "2023-06-21T01:35:46+0000",
+      "dateFinished": "2023-06-21T01:35:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:138"
+    },
+    {
+      "text": "val prePeriodo = data2\n  .groupBy(\"Periodo\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \ndata2.select(\"Periodo\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:37:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----+\n|Periodo|count|\n+-------+-----+\n| 202301| 8879|\n| 202302| 8867|\n| 202303| 8834|\n+-------+-----+\n\n\u001b[1m\u001b[34mprePeriodo\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres119\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=417",
+              "$$hashKey": "object:4849"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=418",
+              "$$hashKey": "object:4850"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=419",
+              "$$hashKey": "object:4851"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=420",
+              "$$hashKey": "object:4852"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311346029_1825721263",
+      "id": "paragraph_1687311346029_1825721263",
+      "dateCreated": "2023-06-21T01:35:46+0000",
+      "dateStarted": "2023-06-21T01:37:46+0000",
+      "dateFinished": "2023-06-21T01:37:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:139"
+    },
+    {
+      "text": "val preMes = data2\n  .groupBy(\"Mes\")\n  .count()\n  .orderBy(desc(\"count\"))\n  .show();\n  \ndata2.select(\"Mes\").count();",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-21T01:38:21+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+\n|Mes|count|\n+---+-----+\n|  1| 8879|\n|  2| 8867|\n|  3| 8834|\n+---+-----+\n\n\u001b[1m\u001b[34mpreMes\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m = ()\n\u001b[1m\u001b[34mres120\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 26580\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=421",
+              "$$hashKey": "object:4910"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=422",
+              "$$hashKey": "object:4911"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=423",
+              "$$hashKey": "object:4912"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=424",
+              "$$hashKey": "object:4913"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311466036_2102319653",
+      "id": "paragraph_1687311466036_2102319653",
+      "dateCreated": "2023-06-21T01:37:46+0000",
+      "dateStarted": "2023-06-21T01:38:12+0000",
+      "dateFinished": "2023-06-21T01:38:13+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:140"
+    },
+    {
+      "text": "%md\n# LIMITE INFERIOR Y SUPERIOR DE LA COLUMNA \"pagoMensualArriendo\"",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:34:28+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>LIMITE INFERIOR Y SUPERIOR DE LA COLUMNA &ldquo;pagoMensualArriendo&rdquo;</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687311492935_823814173",
+      "id": "paragraph_1687311492935_823814173",
+      "dateCreated": "2023-06-21T01:38:12+0000",
+      "dateStarted": "2023-06-26T17:34:23+0000",
+      "dateFinished": "2023-06-26T17:34:23+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:141"
+    },
+    {
+      "text": "data2.select(\"pagoMensualArriendo\").summary().show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:36:13+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-------------------+\n|summary|pagoMensualArriendo|\n+-------+-------------------+\n|  count|              26580|\n|   mean|  692.5930398796087|\n| stddev|  22949.32374617818|\n|    min|                 10|\n|    25%|                 90|\n|    50%|                150|\n|    75%|                200|\n|    max|             999999|\n+-------+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=50",
+              "$$hashKey": "object:5011"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=51",
+              "$$hashKey": "object:5012"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800863523_1549474200",
+      "id": "paragraph_1687800863523_1549474200",
+      "dateCreated": "2023-06-26T17:34:23+0000",
+      "dateStarted": "2023-06-26T17:36:13+0000",
+      "dateFinished": "2023-06-26T17:36:13+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:142"
+    },
+    {
+      "text": "val avg = data2.select(mean(\"pagoMensualArriendo\"))\n    .first()(0)\n    .asInstanceOf[Double]",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:36:38+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mavg\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 692.5930398796087\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=52",
+              "$$hashKey": "object:5062"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=53",
+              "$$hashKey": "object:5063"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800900582_1598882565",
+      "id": "paragraph_1687800900582_1598882565",
+      "dateCreated": "2023-06-26T17:35:00+0000",
+      "dateStarted": "2023-06-26T17:36:38+0000",
+      "dateFinished": "2023-06-26T17:36:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:143"
+    },
+    {
+      "text": "val stdDesv = data2.select(stddev(\"pagoMensualArriendo\"))\n    .first()(0)\n    .asInstanceOf[Double]",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:37:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mstdDesv\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 22949.32374617818\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=54",
+              "$$hashKey": "object:5113"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=55",
+              "$$hashKey": "object:5114"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800998282_494322213",
+      "id": "paragraph_1687800998282_494322213",
+      "dateCreated": "2023-06-26T17:36:38+0000",
+      "dateStarted": "2023-06-26T17:37:04+0000",
+      "dateFinished": "2023-06-26T17:37:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:144"
+    },
+    {
+      "text": "val inferior = avg - 3 * stdDesv\nval superior = avg + 3 * stdDesv",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:37:44+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34minferior\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = -68155.37819865493\n\u001b[1m\u001b[34msuperior\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 69540.56427841414\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801015339_538998093",
+      "id": "paragraph_1687801015339_538998093",
+      "dateCreated": "2023-06-26T17:36:55+0000",
+      "dateStarted": "2023-06-26T17:37:44+0000",
+      "dateFinished": "2023-06-26T17:37:44+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:145"
+    },
+    {
+      "text": "val valoresMenoresLIInferior = data2.select(col(\"pagoMensualArriendo\")).where($\"pagoMensualArriendo\"  inferior)\nvaloresMenoresLIInferior.describe().show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:40:10+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-------------------+\n|summary|pagoMensualArriendo|\n+-------+-------------------+\n|  count|                  0|\n|   mean|               null|\n| stddev|               null|\n|    min|               null|\n|    max|               null|\n+-------+-------------------+\n\n\u001b[1m\u001b[34mvaloresMenoresLIInferior\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [pagoMensualArriendo: int]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=56",
+              "$$hashKey": "object:5204"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=57",
+              "$$hashKey": "object:5205"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801064746_1128112499",
+      "id": "paragraph_1687801064746_1128112499",
+      "dateCreated": "2023-06-26T17:37:44+0000",
+      "dateStarted": "2023-06-26T17:38:20+0000",
+      "dateFinished": "2023-06-26T17:38:21+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:146"
+    },
+    {
+      "text": "val valoresMayoresLSuperior = data2.select(col(\"pagoMensualArriendo\")).where($\"pagoMensualArriendo\" > superior)\nvaloresMayoresLSuperior.describe().show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:43:29+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-------------------+\n|summary|pagoMensualArriendo|\n+-------+-------------------+\n|  count|                 20|\n|   mean|          705864.25|\n| stddev| 461413.62317931245|\n|    min|               2800|\n|    max|             999999|\n+-------+-------------------+\n\n\u001b[1m\u001b[34mvaloresMayoresLSuperior\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [pagoMensualArriendo: int]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=79",
+              "$$hashKey": "object:5255"
+            },
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=80",
+              "$$hashKey": "object:5256"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801094409_1095260434",
+      "id": "paragraph_1687801094409_1095260434",
+      "dateCreated": "2023-06-26T17:38:14+0000",
+      "dateStarted": "2023-06-26T17:43:29+0000",
+      "dateFinished": "2023-06-26T17:43:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:147"
+    },
+    {
+      "text": "valoresMayoresLSuperior.orderBy($\"pagoMensualArriendo\".desc).show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:43:33+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+\n|pagoMensualArriendo|\n+-------------------+\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|             999999|\n|              99999|\n|               5000|\n|               3500|\n|               3000|\n|               3000|\n|               2800|\n+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://10.0.5.2:4040/jobs/job?id=81",
+              "$$hashKey": "object:5306"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801137641_1862914301",
+      "id": "paragraph_1687801137641_1862914301",
+      "dateCreated": "2023-06-26T17:38:57+0000",
+      "dateStarted": "2023-06-26T17:43:33+0000",
+      "dateFinished": "2023-06-26T17:43:33+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:148"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801161294_1312529239",
+      "id": "paragraph_1687801161294_1312529239",
+      "dateCreated": "2023-06-26T17:39:21+0000",
+      "status": "READY",
+      "$$hashKey": "object:149"
+    }
+  ],
+  "name": "Avance1 - Datos Crudos",
+  "id": "2J5DVHXX3",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Proyecto Integrador/Avance1 - Datos Crudos"
+}
