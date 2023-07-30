@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `Viviendas`.`Hogar` (
   `numDormitorios` BIGINT(150) NOT NULL,
   `numCuartosNegocio` BIGINT(150) NOT NULL,
   `numCuartos` BIGINT(150) NOT NULL,
-  `tipoVivienda` VARCHAR(100) NOT NULL,
+  `viaAcceso` VARCHAR(100) NOT NULL,
   `cantidadHogar` BIGINT(150) NOT NULL,
   `disponeHogarCocina` VARCHAR(2) NOT NULL,
   `codHogar` BIGINT(150) NOT NULL,
